@@ -25,9 +25,9 @@ class UsersTableSeeder extends Seeder
                 'status' => 'active',
             ],
             [
-                'name' => 'Levan Soroznishvili',
-                'username' => 'leo',
-                'email' => 'leo@gmail.com',
+                'name' => 'John Doe',
+                'username' => 'john',
+                'email' => 'john@gmail.com',
                 'password' => Hash::make('111111'),
                 'role' => 'user',
                 'status' => 'active',
