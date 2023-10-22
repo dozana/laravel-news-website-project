@@ -1,15 +1,20 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    @include('admin.body.head')
 </head>
-<body>
+<body class="hold-transition sidebar-mini">
 
-    <h1>This is Admin Dashboard</h1>
+<div class="wrapper">
+    @include('admin.body.navbar')
+    @include('admin.body.sidebar')
+    <div class="content-wrapper">
+        @yield('admin')
+    </div>
+    @include('admin.body.footer')
+</div>
+
+@include('admin.body.bottom')
 
 </body>
 </html>
