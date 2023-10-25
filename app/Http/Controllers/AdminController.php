@@ -42,4 +42,26 @@ class AdminController extends Controller
 
         return view('admin.admin_profile_view', compact('admin_data'));
     }
+
+    public function adminProfileStore(Request $request)
+    {
+        $id = Auth::user()->id;
+        $data = User::find($id);
+        $data->username = $request->username;
+        $data->name = $request->name;
+        $data->email = $request->email;
+        $data->phone = $request->phone;
+
+        if($request->file('photo')) {
+            $file = $request->file('photo');
+            @unlink(public_path('upload/admin_images/'.$data->photo));
+            $file_name = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('upload/admin_images'), $file_name);
+            $data['photo'] = $file_name;
+        }
+
+        $data->save();
+
+        return redirect()->back();
+    }
 }

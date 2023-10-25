@@ -6,6 +6,20 @@
 
     <div class="sidebar">
 
+        @php
+            $id = Auth::user()->id;
+            $admin_data = App\Models\User::find($id);
+        @endphp
+
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="{{ (!empty($admin_data->photo)) ? url('upload/admin_images/'.$admin_data->photo) : url('upload/no_image.png') }}" class="img-circle elevation-2" alt="{{ $admin_data->name }}">
+            </div>
+            <div class="info">
+                <a href="{{ route('admin.profile') }}" class="d-block">{{ $admin_data->name }}</a>
+            </div>
+        </div>
+
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-header">Navigation</li>

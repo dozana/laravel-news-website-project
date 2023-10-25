@@ -16,11 +16,11 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <div class="card card-primary card-outline">
                         <div class="card-body box-profile">
                             <div class="text-center">
-                                <img class="profile-user-img img-fluid img-circle" src="{{ (!empty($admin_data->photo)) ? url('upload/admin_images/'.$admin_data->photo) : url('upload/no_image.png') }}" alt="profile picture">
+                                <img class="profile-user-img img-fluid img-circle" src="{{ (!empty($admin_data->photo)) ? url('upload/admin_images/'.$admin_data->photo) : url('upload/no_image.png') }}" alt="{{ $admin_data->name }}">
                             </div>
 
                             <h3 class="profile-username text-center mb-3">{{ $admin_data->name }}</h3>
@@ -41,13 +41,14 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-md-9">
-                    <div class="card">
+                <div class="col-md-8">
+                    <div class="card card-primary card-outline">
                         <div class="card-header py-3">
                             <h3 class="card-title">Admin Personal Info</h3>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="">
+                            <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">
+                                @csrf
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
@@ -58,7 +59,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="full_name">Full Name</label>
-                                            <input type="text" name="full_name" id="full_name" class="form-control" value="{{ $admin_data->name }}">
+                                            <input type="text" name="name" id="full_name" class="form-control" value="{{ $admin_data->name }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
