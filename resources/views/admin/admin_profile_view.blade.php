@@ -102,9 +102,10 @@
 
 @section('scripts')
     <script>
+        // Update Image
         $(document).ready(function() {
            $('#image').change(function (e) {
-               var reader = new FileReader();
+               let reader = new FileReader();
                reader.onload = function (e) {
                    $('#show_image').attr('src', e.target.result);
                }
