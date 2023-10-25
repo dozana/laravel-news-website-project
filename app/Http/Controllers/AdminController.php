@@ -22,12 +22,22 @@ class AdminController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/admin/logout/page');
+        $notification = [
+            'message' => 'Admin Logout Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return redirect('/admin/logout/page')->with($notification);
     }
 
     public function adminLogin()
     {
-        return view('admin.admin_login');
+        $notification = [
+            'message' => 'Admin Login Successfully',
+            'alert-type' => 'info'
+        ];
+
+        return view('admin.admin_login')->with($notification);
     }
 
     public function adminLogoutPage()
