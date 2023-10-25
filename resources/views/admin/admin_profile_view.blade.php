@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">My Profile</h1>
+                    <h1 class="m-0">Admin Edit Profile</h1>
                 </div>
             </div>
         </div>

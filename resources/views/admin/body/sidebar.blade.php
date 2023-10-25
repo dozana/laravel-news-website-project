@@ -65,6 +65,14 @@
                     </a>
                 </li>
                 <li class="nav-item">
+                    <a href="{{ route('admin.change.password') }}" class="nav-link">
+                        <i class="nav-icon far fa-edit"></i>
+                        <p>
+                            Change Password
+                        </p>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-cog"></i>
                         <p>
@@ -77,15 +85,6 @@
                         <i class="nav-icon fas fa-sign-out-alt"></i>
                         <p>
                             Logout
-                        </p>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-th"></i>
-                        <p>
-                            Link
-                            <span class="right badge badge-danger">New</span>
                         </p>
                     </a>
                 </li>
