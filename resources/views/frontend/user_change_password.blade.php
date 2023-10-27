@@ -1,6 +1,6 @@
 @extends('frontend.home_dashboard')
 
-@section('title', 'My Profile')
+@section('title', 'Change Password')
 
 @section('home')
     <div class="container flex-grow">
@@ -22,10 +22,10 @@
             <div class="col-lg-9 col-md-8">
                 <div class="card mb-3">
                     <div class="card-header">
-                        User Account
+                        User Change Password
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('user.profile.store') }}" enctype="multipart/form-data">
+                        <form method="post" action="{{ route('user.update.password') }}">
                             @csrf
 
                             @if(session('status'))
@@ -39,48 +39,28 @@
                             @endif
 
                             <div class="mb-3">
-                                <label for="name" class="form-label">Name</label>
-                                <input type="text" class="form-control" name="name" id="name" value="{{ $user_data->name }}">
+                                <label for="old_password" class="form-label">Old Password</label>
+                                <input type="password" class="form-control @error('old_password') is-invalid @enderror" name="old_password" id="old_password">
+                                @error('old_password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="username" class="form-label">Username</label>
-                                <input type="text" class="form-control" name="username" id="username" value="{{ $user_data->username }}">
+                                <label for="new_password" class="form-label">New Password</label>
+                                <input type="password" class="form-control @error('new_password') is-invalid @enderror" name="new_password" id="new_password">
+                                @error('new_password')
+                                <span class="text-danger">{{ $message }}</span>
+                                @enderror
                             </div>
                             <div class="mb-3">
-                                <label for="email" class="form-label">E-Mail</label>
-                                <input type="email" class="form-control" name="email" id="email" value="{{ $user_data->email }}">
+                                <label for="new_password_confirmation" class="form-label">Confirm New Password</label>
+                                <input type="password" class="form-control" name="new_password_confirmation" id="new_password_confirmation">
                             </div>
-                            <div class="mb-3">
-                                <label for="phone" class="form-label">Phone</label>
-                                <input type="text" class="form-control" name="phone" id="phone" value="{{ $user_data->phone }}">
-                            </div>
-                            <div class="mb-3">
-                                <img class="img-fluid mb-2" id="show_image" width="80" src="{{ (!empty($user_data->photo)) ? url('upload/user_images/'.$user_data->photo) : url('upload/no_image.png') }}" alt="{{ $user_data->name }}">
-                                <div class="form-group">
-                                    <label for="photo" class="form-label">Photo</label>
-                                    <input type="file" class="form-control" id="photo" name="photo">
-                                </div>
-                            </div>
-                            <button class="btn btn-primary" type="submit">Save</button>
+                            <button class="btn btn-primary" type="submit">Change Password</button>
                         </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-@endsection
-
-@section('scripts')
-    <script>
-        // Update Image
-        $(document).ready(function() {
-            $('#photo').change(function (e) {
-                let reader = new FileReader();
-                reader.onload = function (e) {
-                    $('#show_image').attr('src', e.target.result);
-                }
-                reader.readAsDataURL(e.target.files['0']);
-            })
-        });
-    </script>
 @endsection
