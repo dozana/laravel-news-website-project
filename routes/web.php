@@ -22,6 +22,7 @@ Route::get('/', [IndexController::class, 'index']);
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/dashboard', [UserController::class, 'userDashboard'])->name('dashboard');
+    Route::post('/user/profile/store', [UserController::class, 'userProfileStore'])->name('user.profile.store');
 });
 
 require __DIR__.'/auth.php';
