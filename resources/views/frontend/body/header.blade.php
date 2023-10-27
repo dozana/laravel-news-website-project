@@ -39,12 +39,19 @@
         </ul>
 
         <ul class="navbar-nav">
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('login') }}">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('register') }}">Register</a>
-            </li>
+            @auth()
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('user.logout') }}">Logout</a>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('login') }}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ route('register') }}">Register</a>
+                </li>
+            @endauth
+
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     Language
