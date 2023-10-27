@@ -16,7 +16,7 @@
                     <li class="list-group-item"><a href="#"><i class="fas fa-user-edit"></i> My Profile</a></li>
                     <li class="list-group-item"><a href="#"><i class="fas fa-key"></i> Change Password</a></li>
                     <li class="list-group-item"><a href="#"><i class="fas fa-bookmark"></i> Read Later List</a></li>
-                    <li class="list-group-item"><a href="#"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+                    <li class="list-group-item"><a href="{{ route('user.logout') }}"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
                 </ul>
             </div>
             <div class="col-lg-9 col-md-8">

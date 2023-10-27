@@ -8,6 +8,17 @@
                 <div class="card-body">
                     <form class="mt-3" method="POST" action="{{ route('login') }}">
                         @csrf
+
+                        @if(session('status'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('status') }}
+                            </div>
+                        @elseif(session('error'))
+                            <div class="alert alert-danger" role="alert">
+                                {{ session('error') }}
+                            </div>
+                        @endif
+
                         <div class="mb-3">
                             <label for="email" class="form-label">Email</label>
                             <input type="email" class="form-control" name="email" id="email">

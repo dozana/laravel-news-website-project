@@ -37,4 +37,15 @@ class UserController extends Controller
 
         return redirect()->back()->with('status', 'Profile Updated Successfully');
     }
+
+    public function userLogout(Request $request)
+    {
+        Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect('/login')->with('status', 'User Logout Successfully');
+    }
 }
