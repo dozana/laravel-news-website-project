@@ -20,20 +20,18 @@
                         <div class="card-header py-3">
                             <h3 class="card-title">Add Category</h3>
                         </div>
-                        <div class="card-body p-0">
-                            <form id="myForm" method="post" action="{{ route('store.category') }}">
+                        <div class="card-body">
+                            <form method="post" action="{{ route('store.category') }}">
                                 @csrf
 
-                                <div class="card-body">
-                                    <div class="form-group">
-                                        <label for="category_name">Category Name</label>
-                                        <input type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" id="category_name">
-                                        @error('category_name')
-                                            <span class="text-danger">{{ $message }}</span>
-                                        @enderror
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Save</button>
+                                <div class="form-group">
+                                    <label for="category_name">Category Name</label>
+                                    <input type="text" class="form-control @error('category_name') is-invalid @enderror" name="category_name" id="category_name">
+                                    @error('category_name')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
+                                <button type="submit" class="btn btn-primary">Save</button>
                             </form>
                         </div>
                     </div>
