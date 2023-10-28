@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
         <img src="{{ asset('backend/assets/dist/img/AdminLTELogo.png') }}" alt="NEWS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">NEWS</span>
+        <span class="brand-text font-weight-light">NEWSPORTAL</span>
     </a>
 
     <div class="sidebar">
@@ -34,7 +34,7 @@
                 <li class="nav-header">Menu</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-tachometer-alt"></i>
+                        <i class="nav-icon fas fa-stream"></i>
                         <p>
                             Category
                             <i class="right fas fa-angle-left"></i>
@@ -48,7 +48,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('add.category') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Add Category</p>
                             </a>
