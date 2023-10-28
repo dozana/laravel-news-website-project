@@ -22,7 +22,7 @@
             <div class="col-lg-9 col-md-8">
                 <div class="card mb-3">
                     <div class="card-header">
-                        Change My Password
+                        Change Password
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('user.update.password') }}">

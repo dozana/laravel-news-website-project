@@ -1,12 +1,14 @@
 <?php
 
-use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
+
+use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Backend\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -41,6 +43,15 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
 Route::get('/admin/login', [AdminController::class, 'adminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+    // Category all Route
+    Route::controller(CategoryController::class)->group(function () {
+        Route::get('/all/category','allCategory')->name('all.category');
+    });
+});
+
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

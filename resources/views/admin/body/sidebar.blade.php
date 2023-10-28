@@ -36,21 +36,21 @@
                     <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
-                            Menu 1
+                            Category
                             <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{ route('all.category') }}" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Active Page</p>
+                                <p>All Category</p>
                             </a>
                         </li>
                         <li class="nav-item">
                             <a href="#" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
-                                <p>Inactive Page</p>
+                                <p>Add Category</p>
                             </a>
                         </li>
                     </ul>
