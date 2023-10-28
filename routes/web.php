@@ -49,7 +49,9 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(CategoryController::class)->group(function () {
         Route::get('/all/category','allCategory')->name('all.category');
         Route::get('/add/category','addCategory')->name('add.category');
-        Route::post('/store/category','storeCategory')->name('category.store');
+        Route::post('/store/category','storeCategory')->name('store.category');
+        Route::get('/edit/category/{id}','editCategory')->name('edit.category');
+        Route::post('/update/category/{id}','updateCategory')->name('update.category');
     });
 });
 

@@ -1,6 +1,6 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Category All')
+@section('title', 'All Categories')
 
 @section('admin')
     <div class="content-header">
@@ -37,7 +37,7 @@
                                             <td>{{ $item->category_name }}</td>
                                             <td>{{ $item->category_slug }}</td>
                                             <td>
-                                                <a href="#" class="btn btn-primary btn-xs">Edit</a>
+                                                <a href="{{ route('edit.category', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
                                                 <a href="#" class="btn btn-danger btn-xs">Delete</a>
                                             </td>
                                         </tr>
