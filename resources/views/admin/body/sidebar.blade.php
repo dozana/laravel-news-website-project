@@ -78,6 +78,29 @@
                         </li>
                     </ul>
                 </li>
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
+                        <i class="nav-icon fas fa-users-cog"></i>
+                        <p>
+                            Admins
+                            <i class="right fas fa-angle-left"></i>
+                        </p>
+                    </a>
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{ route('all.admin') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>All Admin</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('add.admin') }}" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Add Admin</p>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
                 <li class="nav-header">Custom</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.profile') }}" class="nav-link">
