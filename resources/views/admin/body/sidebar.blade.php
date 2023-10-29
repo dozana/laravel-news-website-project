@@ -34,7 +34,7 @@
                 </li>
 
                 @if($user_status == 'active')
-                    <li class="nav-header">Menu</li>
+                    <li class="nav-header">Content</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-stream"></i>
@@ -106,6 +106,29 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-file-alt"></i>
+                            <p>
+                                News Post
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.news.post') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All News Post</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.news.post') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add News Post</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-cog"></i>
                             <p>
                                 Settings
@@ -114,7 +137,7 @@
                     </li>
                 @endif
 
-                <li class="nav-header">Custom</li>
+                <li class="nav-header">Settings</li>
                 <li class="nav-item">
                     <a href="{{ route('admin.profile') }}" class="nav-link">
                         <i class="nav-icon fas fa-user"></i>

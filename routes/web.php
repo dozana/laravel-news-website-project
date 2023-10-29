@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubcategoryController;
+use App\Http\Controllers\Backend\NewsPostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -63,8 +64,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         // Admin status
         Route::get('/inactive/admin/user/{id}','inactiveAdminUser')->name('inactive.admin.user');
         Route::get('/active/admin/user/{id}','activeAdminUser')->name('active.admin.user');
-
-
     });
 
     // Category all Route
@@ -85,6 +84,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/subcategory/{id}','editSubcategory')->name('edit.subcategory');
         Route::post('/update/subcategory/{id}','updateSubcategory')->name('update.subcategory');
         Route::get('/delete/subcategory/{id}','deleteSubcategory')->name('delete.subcategory');
+    });
+
+    // News Post all Route
+    Route::controller(NewsPostController::class)->group(function () {
+        Route::get('/all/news/post','allNewsPost')->name('all.news.post');
+        Route::get('/add/news/post','addNewsPost')->name('add.news.post');
+        Route::post('/store/news/post','storeNewsPost')->name('store.news.post');
+        Route::get('/edit/news/post/{id}','editNewsPost')->name('edit.news.post');
+        Route::post('/update/news/post/{id}','updateNewsPost')->name('update.news.post');
+        Route::get('/delete/news/post/{id}','deleteNewsPost')->name('delete.news.post');
     });
 
 });
