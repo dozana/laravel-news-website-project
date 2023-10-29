@@ -52,14 +52,14 @@
                                 <div class="row">
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="username">Username</label>
-                                            <input type="text" name="username" id="username" class="form-control" value="{{ $admin_data->username }}">
+                                            <label for="full_name">Full Name</label>
+                                            <input type="text" name="name" id="full_name" class="form-control" value="{{ $admin_data->name }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="form-group">
-                                            <label for="full_name">Full Name</label>
-                                            <input type="text" name="name" id="full_name" class="form-control" value="{{ $admin_data->name }}">
+                                            <label for="username">Username</label>
+                                            <input type="text" name="username" id="username" class="form-control" value="{{ $admin_data->username }}">
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
