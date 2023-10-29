@@ -29,8 +29,9 @@
                                     <th>Name</th>
                                     <th>E-Mail</th>
                                     <th>Phone</th>
-                                    <th>Status</th>
-                                    <th class="col-md-2">Action</th>
+                                    <th class="text-center">Status</th>
+                                    <th class="text-center">Activate</th>
+                                    <th class="text-center col-md-2">Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
@@ -41,24 +42,36 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>{{ $item->phone }}</td>
-                                            <td>
+                                            <td class="text-center">
                                                 @if($item->status == 'active')
-                                                    <span class="badge badge-pill bg-success">Active</span>
+                                                    <span class="badge badge-pill bg-success"><i class="far fa-smile"></i> Active</span>
                                                 @else
-                                                    <span class="badge badge-pill bg-danger">Inactive</span>
+                                                    <span class="badge badge-pill bg-danger"><i class="far fa-times-circle"></i> Inactive</span>
                                                 @endif
                                             </td>
-                                            <td>
+                                            <td class="text-center">
+                                                @if($item->status == 'active')
+                                                    <a href="{{ route('inactive.admin.user', $item->id) }}" class="btn btn-dark btn-xs" title="Inactive"><i class="fas fa-thumbs-down"></i></a>
+                                                @else
+                                                    <a href="{{ route('active.admin.user', $item->id) }}" class="btn btn-success btn-xs" title="Active"><i class="fas fa-thumbs-up"></i></a>
+                                                @endif
+                                            </td>
+                                            <td class="text-center">
                                                 <a href="{{ route('edit.admin', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
                                                 <a href="{{ route('delete.admin', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="7">No data available</td>
+                                            <td colspan="8">No data available</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
+                                <tfoot>
+                                    <tr>
+                                       <td colspan="8">All Admins: {{ count($admins) }}</td>
+                                    </tr>
+                                </tfoot>
                             </table>
                         </div>
                     </div>

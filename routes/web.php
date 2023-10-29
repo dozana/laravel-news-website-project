@@ -45,17 +45,26 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(AdminController::class)->group(function () {
         Route::get('/admin/dashboard', 'adminDashboard')->name('admin.dashboard');
         Route::get('/admin/logout', 'adminLogout')->name('admin.logout');
+
+        // Admin profile
         Route::get('/admin/profile', 'adminProfile')->name('admin.profile');
         Route::post('/admin/profile/store', 'adminProfileStore')->name('admin.profile.store');
         Route::get('/admin/change/password', 'adminChangePassword')->name('admin.change.password');
         Route::post('/admin/update/password', 'adminUpdatePassword')->name('admin.update.password');
 
+        // Admin user CRUD
         Route::get('/all/admin','allAdmin')->name('all.admin');
         Route::get('/add/admin','addAdmin')->name('add.admin');
         Route::post('/store/admin','storeAdmin')->name('store.admin');
         Route::get('/edit/admin/{id}','editAdmin')->name('edit.admin');
         Route::post('/update/admin/{id}','updateAdmin')->name('update.admin');
         Route::get('/delete/admin/{id}','deleteAdmin')->name('delete.admin');
+
+        // Admin status
+        Route::get('/inactive/admin/user/{id}','inactiveAdminUser')->name('inactive.admin.user');
+        Route::get('/active/admin/user/{id}','activeAdminUser')->name('active.admin.user');
+
+
     });
 
     // Category all Route

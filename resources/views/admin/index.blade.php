@@ -19,7 +19,7 @@
                     <div class="small-box bg-info">
                         <div class="inner">
                             <h3>0</h3>
-                            <p>Item 1</p>
+                            <p>Categories</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-bag"></i>
@@ -31,7 +31,7 @@
                     <div class="small-box bg-success">
                         <div class="inner">
                             <h3>0</h3>
-                            <p>Item 2</p>
+                            <p>Subcategories</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-stats-bars"></i>
@@ -43,7 +43,7 @@
                     <div class="small-box bg-warning">
                         <div class="inner">
                             <h3>0</h3>
-                            <p>Item 3</p>
+                            <p>Admins</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
