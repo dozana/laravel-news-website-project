@@ -17,27 +17,40 @@
             <a class="h1"><b>Admin</b></a>
         </div>
         <div class="card-body">
-            <p class="login-box-msg">Enter your username and password</p>
+            <p class="login-box-msg">Enter your email and password</p>
 
             <form action="{{ route('login') }}" method="post" class="mb-4">
                 @csrf
 
-                <div class="input-group mb-3">
-                    <input type="email" id="email" name="email" class="form-control" placeholder="E-Mail">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-user"></span>
+                <div class="form-group">
+                    <label for="email">E-Mail</label>
+                    <div class="input-group mb-3">
+                        <input type="email" id="email" name="email" class="form-control @error('email') is-invalid @enderror" placeholder="E-Mail">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-user"></span>
+                            </div>
                         </div>
                     </div>
+                    @error('email')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
-                <div class="input-group mb-3">
-                    <input type="password" id="password" name="password" class="form-control" placeholder="Password">
-                    <div class="input-group-append">
-                        <div class="input-group-text">
-                            <span class="fas fa-lock"></span>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-group mb-3">
+                        <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="Password">
+                        <div class="input-group-append">
+                            <div class="input-group-text">
+                                <span class="fas fa-lock"></span>
+                            </div>
                         </div>
                     </div>
+                    @error('password')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
                 </div>
+
                 <div class="row">
                     <div class="col-8">
                         <div class="icheck-primary">
@@ -54,10 +67,10 @@
             </form>
 
             <p class="mb-1">
-                <a href="forgot-password.html">I forgot my password</a>
+                <a href="#">I forgot my password</a>
             </p>
             <p class="mb-0">
-                <a href="register.html" class="text-center">Register a new membership</a>
+                <a href="#" class="text-center">Register a new membership</a>
             </p>
         </div>
     </div>
