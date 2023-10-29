@@ -44,9 +44,9 @@
                                             <td>{{ $item->phone }}</td>
                                             <td class="text-center">
                                                 @if($item->status == 'active')
-                                                    <span class="badge badge-pill bg-success"><i class="far fa-smile"></i> Active</span>
+                                                    <span class="badge bg-success"><i class="far fa-smile"></i> Active</span>
                                                 @else
-                                                    <span class="badge badge-pill bg-danger"><i class="far fa-times-circle"></i> Inactive</span>
+                                                    <span class="badge bg-danger"><i class="far fa-times-circle"></i> Inactive</span>
                                                 @endif
                                             </td>
                                             <td class="text-center">
