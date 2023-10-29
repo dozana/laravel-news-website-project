@@ -121,6 +121,7 @@ class AdminController extends Controller
     {
         $request->validate([
             'name' => 'required',
+            'username' => 'required',
             'email' => 'required',
             'password' => 'required',
             'phone' => 'required'
@@ -150,6 +151,51 @@ class AdminController extends Controller
 
         $notification = [
             'message' => 'New Admin User Created Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->route('all.admin')->with($notification);
+    }
+
+    public function editAdmin($id)
+    {
+        $admin = User::findOrFail($id);
+        return view('backend.admin.admin_edit', compact('admin'));
+    }
+
+    public function updateAdmin(Request $request)
+    {
+        $request->validate([
+            'name' => 'required',
+            'username' => 'required',
+            'email' => 'required',
+            'phone' => 'required'
+        ]);
+
+        $admin_user_id = $request->id;
+
+        /*
+        $user = User::findOrFail($admin_user_id);
+        $user->name = $request->name;
+        $user->username = $request->username;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->role = 'admin';
+        $user->status = 'inactive';
+        $user->save();
+        */
+
+        User::findOrFail($admin_user_id)->update([
+            'name' => $request->name,
+            'username' => $request->username,
+            'email' => $request->email,
+            'phone' => $request->phone,
+            'role' => 'admin',
+            'status' => 'inactive'
+        ]);
+
+        $notification = [
+            'message' => 'New Admin User Updated Successfully',
             'alert-type' => 'success'
         ];
 

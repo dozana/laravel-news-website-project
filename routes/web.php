@@ -20,8 +20,11 @@ use App\Http\Controllers\Backend\SubcategoryController;
 require __DIR__.'/auth.php';
 
 Route::get('/', [IndexController::class, 'index']);
+Route::get('/admin/login', [AdminController::class, 'adminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
+Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
 
 Route::middleware(['auth'])->group(function () {
+
     // User all Route
     Route::get('/dashboard', [UserController::class, 'userDashboard'])->name('dashboard');
     Route::post('/user/profile/store', [UserController::class, 'userProfileStore'])->name('user.profile.store');
@@ -33,16 +36,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+
 });
-
-
-
-
-
-
-
-Route::get('/admin/login', [AdminController::class, 'adminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
-Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
 
@@ -82,5 +77,6 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/subcategory/{id}','updateSubcategory')->name('update.subcategory');
         Route::get('/delete/subcategory/{id}','deleteSubcategory')->name('delete.subcategory');
     });
+
 });
 
