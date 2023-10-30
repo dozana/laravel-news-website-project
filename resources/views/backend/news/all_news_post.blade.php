@@ -78,7 +78,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('add.admin') }}" class="btn btn-primary">Add Admin</a>
+                    <a href="{{ route('add.news.post') }}" class="btn btn-primary">Add News Post</a>
                 </div>
             </div>
         </div>
