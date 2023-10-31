@@ -40,9 +40,9 @@
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td><img width="50" src="{{ (!empty($item->image)) ? url($item->image) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
-                                            <td>{{ $item->news_title }}</td>
-                                            <td>{{ $item->category_id }}</td>
-                                            <td>{{ $item->user_id }}</td>
+                                            <td>{{ Str::limit($item->news_title, 20) }}</td>
+                                            <td>{{ $item['category']['category_name'] }}</td>
+                                            <td>{{ $item['user']['name'] }}</td>
                                             <td>{{ \Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</td>
                                             <td class="text-center">
                                                 @if($item->status == 1)
@@ -59,8 +59,8 @@
                                                 @endif
                                             </td>
                                             <td class="text-center">
-                                                <a href="{{ route('edit.admin', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
-                                                <a href="{{ route('delete.admin', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
+                                                <a href="{{ route('edit.news.post', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                <a href="{{ route('delete.news.post', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @empty

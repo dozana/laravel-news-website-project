@@ -76,7 +76,7 @@ class NewsPostController extends Controller
 
     public function editNewsPost()
     {
-
+        return view('backend.news.edit_news_post');
     }
 
     public function updateNewsPost()
