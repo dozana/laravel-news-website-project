@@ -39,7 +39,7 @@
                                     @forelse($all_news_post as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td><img width="50" src="{{ (!empty($item->image)) ? url('upload/admin_images/'.$item->image) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
+                                            <td><img width="50" src="{{ (!empty($item->image)) ? url($item->image) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
                                             <td>{{ $item->news_title }}</td>
                                             <td>{{ $item->category_id }}</td>
                                             <td>{{ $item->user_id }}</td>

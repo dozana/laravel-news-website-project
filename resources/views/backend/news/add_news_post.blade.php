@@ -29,7 +29,7 @@
     <div class="content">
         <div class="container-fluid">
 
-            <form method="post" action="{{ route('store.admin') }}">
+            <form method="post" action="{{ route('store.news.post') }}" enctype="multipart/form-data">
                 @csrf
 
                 <div class="row">
