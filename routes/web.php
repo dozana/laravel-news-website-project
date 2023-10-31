@@ -74,6 +74,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/category/{id}','editCategory')->name('edit.category');
         Route::post('/update/category/{id}','updateCategory')->name('update.category');
         Route::get('/delete/category/{id}','deleteCategory')->name('delete.category');
+
+        Route::get('/subcategory/ajax/{category_id}','getSubCategory');
     });
 
     // Subcategory all Route

@@ -33,29 +33,6 @@
                 @csrf
 
                 <div class="row">
-                    <div class="col-md-8">
-
-                        <div class="card card-primary card-outline">
-                            <div class="card-header py-3">
-                                <h3 class="card-title">Add News Post</h3>
-                                <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Save</button>
-                            </div>
-                            <div class="card-body">
-                                <div class="form-group">
-                                    <label for="news_title">News Title</label>
-                                    <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title">
-                                    @error('news_title')
-                                        <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-                                <div class="form-group">
-                                    <label for="news_details">News Details</label>
-                                    <textarea name="news_details" id="summernote">Place <em>some</em> <u>text</u> <strong>here</strong></textarea>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
                     <div class="col-md-4">
 
                         <div class="card card-primary card-outline">
@@ -76,10 +53,10 @@
                                 <div class="form-group">
                                     <label for="subcategory_id">Select Subcategory</label>
                                     <select name="subcategory_id" class="custom-select">
-                                        <option selected>- Select Subcategory -</option>
-                                        @foreach($subcategories as $subcategory)
-                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>
-                                        @endforeach
+{{--                                        <option selected>- Select Subcategory -</option>--}}
+{{--                                        @foreach($subcategories as $subcategory)--}}
+{{--                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>--}}
+{{--                                        @endforeach--}}
                                     </select>
                                 </div>
 
@@ -137,6 +114,29 @@
                         </div>
 
                     </div>
+                    <div class="col-md-8">
+
+                        <div class="card card-primary card-outline">
+                            <div class="card-header py-3">
+                                <h3 class="card-title">Add News Post</h3>
+                                <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Save</button>
+                            </div>
+                            <div class="card-body">
+                                <div class="form-group">
+                                    <label for="news_title">News Title</label>
+                                    <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title">
+                                    @error('news_title')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+                                <div class="form-group">
+                                    <label for="news_details">News Details</label>
+                                    <textarea name="news_details" id="summernote">Place <em>some</em> <u>text</u> <strong>here</strong></textarea>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
 
             </form>
@@ -186,6 +186,30 @@
         $(function () {
             // Summernote
             $('#summernote').summernote();
+        });
+    </script>
+
+    <script>
+        $(document).ready(function() {
+           $('select[name="category_id"]').on('change', function () {
+               let category_id = $(this).val();
+               if(category_id) {
+                   $.ajax({
+                       url: "{{ url('/subcategory/ajax') }}/"+category_id,
+                       type: "GET",
+                       dataType: "json",
+                       success: function (data) {
+                           $('select[name="subcategory_id]').html('');
+                           let d = $('select[name="subcategory_id"]').empty();
+                           $.each(data, function (key, value) {
+                               $('select[name="subcategory_id"]').append('<option value="' + value.id + '">'+ value.subcategory_name + '</option>');
+                           });
+                       },
+                   });
+               } else {
+                   alert('Danger');
+               }
+           });
         });
     </script>
 

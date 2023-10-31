@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -71,5 +72,11 @@ class CategoryController extends Controller
         ];
 
         return redirect()->back()->with($notification);
+    }
+
+    public function getSubCategory($category_id)
+    {
+        $subcategory = Subcategory::where('category_id', $category_id)->orderBy('subcategory_name','ASC')->get();
+        return json_encode($subcategory);
     }
 }
