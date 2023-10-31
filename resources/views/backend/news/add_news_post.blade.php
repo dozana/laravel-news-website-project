@@ -190,6 +190,7 @@
     </script>
 
     <script>
+        // Dependent Menu
         $(document).ready(function() {
            $('select[name="category_id"]').on('change', function () {
                let category_id = $(this).val();
