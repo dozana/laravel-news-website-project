@@ -26,8 +26,20 @@
                     <div class="col-lg-3 col-6">
                         <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>0</h3>
-                                <p>Categories</p>
+                                <h3>{{ count($news_post) }}</h3>
+                                <p>All News Post</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="{{ route('all.news.post') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ count($active_news) }}</h3>
+                                <p>Active News</p>
                             </div>
                             <div class="icon">
                                 <i class="ion ion-bag"></i>
@@ -36,21 +48,69 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-success">
+                        <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>0</h3>
-                                <p>Subcategories</p>
+                                <h3>{{ count($inactive_news) }}</h3>
+                                <p>Inactive News</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                                <i class="ion ion-bag"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-warning">
+                        <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>0</h3>
+                                <h3>{{ count($breaking_news) }}</h3>
+                                <p>Breaking News</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ count($categories) }}</h3>
+                                <p>Categories</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-bag"></i>
+                            </div>
+                            <a href="{{ route('all.category') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ count($subcategories) }}</h3>
+                                <p>Subcategories</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-stats-bars"></i>
+                            </div>
+                            <a href="{{ route('all.subcategory') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>-</h3>
+                                <p>Tags</p>
+                            </div>
+                            <div class="icon">
+                                <i class="ion ion-pie-graph"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ count($admins) }}</h3>
                                 <p>Admins</p>
                             </div>
                             <div class="icon">
@@ -60,13 +120,13 @@
                         </div>
                     </div>
                     <div class="col-lg-3 col-6">
-                        <div class="small-box bg-danger">
+                        <div class="small-box bg-info">
                             <div class="inner">
-                                <h3>0</h3>
-                                <p>Item 4</p>
+                                <h3>{{ count($users) }}</h3>
+                                <p>Users</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                                <i class="ion ion-person-add"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>

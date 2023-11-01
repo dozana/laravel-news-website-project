@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\NewsPost;
+use App\Models\Subcategory;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -12,7 +15,16 @@ class AdminController extends Controller
 {
     public function adminDashboard()
     {
-        return view('admin.index');
+        $news_post = NewsPost::all();
+        $active_news = NewsPost::where('status', 1)->get();
+        $inactive_news = NewsPost::where('status', 0)->get();
+        $breaking_news = NewsPost::where('breaking_news', 1)->get();
+        $categories = Category::all();
+        $subcategories = Subcategory::all();
+        $admins = User::where('role', 'admin')->get();
+        $users = User::where('role', 'user')->get();
+
+        return view('admin.index', compact('news_post','active_news', 'inactive_news', 'breaking_news', 'categories', 'subcategories', 'admins', 'users'));
     }
 
     public function adminLogout(Request $request): RedirectResponse
