@@ -131,7 +131,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="news_details">News Details</label>
-                                    <textarea name="news_details" id="summernote">Place <em>some</em> <u>text</u> <strong>here</strong></textarea>
+                                    <textarea name="news_details" id="summernote"></textarea>
                                 </div>
                             </div>
                         </div>

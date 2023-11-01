@@ -45,7 +45,9 @@
                                     <select name="category_id" class="custom-select">
                                         <option selected>- Select Category -</option>
                                         @foreach($categories as $category)
-                                            <option value="{{ $category->id }}">{{ $category->category_name }}</option>
+                                            <option value="{{ $category->id }}" {{ $category->id == $news_post->category_id ? 'selected' : '' }}>
+                                                {{ $category->category_name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
@@ -53,10 +55,11 @@
                                 <div class="form-group">
                                     <label for="subcategory_id">Select Subcategory</label>
                                     <select name="subcategory_id" class="custom-select">
-                                        {{--                                        <option selected>- Select Subcategory -</option>--}}
-                                        {{--                                        @foreach($subcategories as $subcategory)--}}
-                                        {{--                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>--}}
-                                        {{--                                        @endforeach--}}
+                                        @foreach($subcategories as $subcategory)
+                                            <option value="{{ $subcategory->id }}" {{ $subcategory->id == $news_post->subcategory_id ? 'selected' : '' }}>
+                                                {{ $subcategory->subcategory_name }}
+                                            </option>
+                                        @endforeach
                                     </select>
                                 </div>
 
@@ -65,13 +68,15 @@
                                     <select name="user_id" class="custom-select">
                                         <option selected>- Select Writer -</option>
                                         @foreach($admin_user as $user)
-                                            <option value="{{ $user->id }}">{{ $user->name }}</option>
+                                            <option value="{{ $user->id }}" {{ $user->id == $news_post->user_id ? 'selected' : '' }}>
+                                                {{ $user->name }}
+                                            </option>
                                         @endforeach
                                     </select>
                                 </div>
 
                                 <div class="form-group">
-                                    <img class="profile-user-img img-fluid img-square mb-2" id="show_image" src="{{ url('upload/no_image.png') }}" alt="">
+                                    <img class="profile-user-img img-fluid img-square mb-2" id="show_image" src="{{ asset($news_post->image) }}" alt="">
                                     <div class="form-group">
                                         <label for="show_image">Select Photo</label>
                                         <div class="input-group">
@@ -87,19 +92,19 @@
                                     <label for="view_section">View Section</label>
                                     <div class="form-group mb-0">
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="breaking_news" id="breaking_news" value="1">
+                                            <input class="form-check-input" type="checkbox" name="breaking_news" id="breaking_news" value="1" {{ $news_post->breaking_news == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="breaking_news">Breaking News</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="top_slider" id="top_slider" value="1">
+                                            <input class="form-check-input" type="checkbox" name="top_slider" id="top_slider" value="1" {{ $news_post->top_slider == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="top_slider">Top Slider</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="first_section_three" id="first_section_three" value="1">
+                                            <input class="form-check-input" type="checkbox" name="first_section_three" id="first_section_three" value="1" {{ $news_post->first_section_three == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="first_section_three">First Section Three</label>
                                         </div>
                                         <div class="form-check">
-                                            <input class="form-check-input" type="checkbox" name="first_section_nine" id="first_section_nine" value="1">
+                                            <input class="form-check-input" type="checkbox" name="first_section_nine" id="first_section_nine" value="1" {{ $news_post->first_section_nine == 1 ? 'checked' : '' }}>
                                             <label class="form-check-label" for="first_section_nine">First Section Nine</label>
                                         </div>
                                     </div>
@@ -107,7 +112,7 @@
 
                                 <div class="form-group mb-0">
                                     <label for="tags">Select Tags</label>
-                                    <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="awesome">
+                                    <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="{{ $news_post->tags }}">
                                 </div>
 
                             </div>
@@ -124,14 +129,14 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="news_title">News Title</label>
-                                    <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title">
+                                    <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title" value="{{ $news_post->news_title }}">
                                     @error('news_title')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
                                 <div class="form-group">
                                     <label for="news_details">News Details</label>
-                                    <textarea name="news_details" id="summernote">Place <em>some</em> <u>text</u> <strong>here</strong></textarea>
+                                    <textarea name="news_details" id="summernote">{{ $news_post->news_details }}</textarea>
                                 </div>
                             </div>
                         </div>
