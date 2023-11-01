@@ -91,13 +91,18 @@ class NewsPostController extends Controller
             'tags' => 'required'
         ]);
 
+        $news_post = NewsPost::findOrFail($request->id);
+        $old_image = $news_post->image;
+
         if($request->file('image')) {
+            // Upload and update logic for a new image
             $image = $request->file('image');
             $name_gen = hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
             Image::make($image)->resize(784,436)->save('upload/news/'.$name_gen);
             $save_url = 'upload/news/'.$name_gen;
 
-            NewsPost::findOrFail($request->id)->update([
+            // Update the news post with the new image
+            $news_post->update([
                 'category_id' => $request->category_id,
                 'subcategory_id' => $request->subcategory_id,
                 'user_id' => $request->user_id,
@@ -114,8 +119,14 @@ class NewsPostController extends Controller
                 'post_month' => date('F'),
                 'updated_at' => Carbon::now(),
             ]);
+
+            // Delete the old image if it exists
+            if ($old_image) {
+                unlink($old_image); // This deletes the old image
+            }
+
         } else {
-            NewsPost::findOrFail($request->id)->update([
+            $news_post->update([
                 'category_id' => $request->category_id,
                 'subcategory_id' => $request->subcategory_id,
                 'user_id' => $request->user_id,
@@ -141,8 +152,47 @@ class NewsPostController extends Controller
         return redirect()->route('all.news.post')->with($notification);
     }
 
-    public function deleteNewsPost()
+    public function deleteNewsPost($id)
     {
+        $post_image = NewsPost::findOrFail($id);
+        $img = $post_image->image;
+        unlink($img);
 
+        NewsPost::findOrFail($id)->delete();
+
+        $notification = [
+            'message' => 'News Post Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function inactiveNewsPost($id)
+    {
+        NewsPost::findOrFail($id)->update([
+            'status' => 0
+        ]);
+
+        $notification = [
+            'message' => 'News Post Inactive',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
+    }
+
+    public function activeNewsPost($id)
+    {
+        NewsPost::findOrFail($id)->update([
+            'status' => 1
+        ]);
+
+        $notification = [
+            'message' => 'News Post Active',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

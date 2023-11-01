@@ -53,9 +53,9 @@
                                             </td>
                                             <td class="text-center">
                                                 @if($item->status == 1)
-                                                    <a href="{{ route('inactive.admin.user', $item->id) }}" class="btn btn-dark btn-xs" title="Inactive"><i class="fas fa-thumbs-down"></i></a>
+                                                    <a href="{{ route('inactive.news.post', $item->id) }}" class="btn btn-dark btn-xs" title="Inactive"><i class="fas fa-thumbs-down"></i></a>
                                                 @else
-                                                    <a href="{{ route('active.admin.user', $item->id) }}" class="btn btn-success btn-xs" title="Active"><i class="fas fa-thumbs-up"></i></a>
+                                                    <a href="{{ route('active.news.post', $item->id) }}" class="btn btn-success btn-xs" title="Active"><i class="fas fa-thumbs-up"></i></a>
                                                 @endif
                                             </td>
                                             <td class="text-center">
