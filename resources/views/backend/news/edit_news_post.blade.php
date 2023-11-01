@@ -40,9 +40,10 @@
                                 <h3 class="card-title">Post Details</h3>
                             </div>
                             <div class="card-body">
+
                                 <div class="form-group">
                                     <label for="category_id">Select Category</label>
-                                    <select name="category_id" class="custom-select">
+                                    <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
                                         <option selected>- Select Category -</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}" {{ $category->id == $news_post->category_id ? 'selected' : '' }}>
@@ -51,10 +52,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="subcategory_id">Select Subcategory</label>
-                                    <select name="subcategory_id" class="custom-select">
+                                    <select name="subcategory_id" class="custom-select @error('subcategory_id') is-invalid @enderror">
                                         @foreach($subcategories as $subcategory)
                                             <option value="{{ $subcategory->id }}" {{ $subcategory->id == $news_post->subcategory_id ? 'selected' : '' }}>
                                                 {{ $subcategory->subcategory_name }}
@@ -62,10 +62,9 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="user_id">Select Writer</label>
-                                    <select name="user_id" class="custom-select">
+                                    <select name="user_id" class="custom-select @error('category_id') is-invalid @enderror">
                                         <option selected>- Select Writer -</option>
                                         @foreach($admin_user as $user)
                                             <option value="{{ $user->id }}" {{ $user->id == $news_post->user_id ? 'selected' : '' }}>
@@ -74,20 +73,18 @@
                                         @endforeach
                                     </select>
                                 </div>
-
                                 <div class="form-group">
                                     <img class="profile-user-img img-fluid img-square mb-2" id="show_image" src="{{ asset($news_post->image) }}" alt="">
                                     <div class="form-group">
                                         <label for="show_image">Select Photo</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="image" name="image">
+                                                <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
                                     <label for="view_section">View Section</label>
                                     <div class="form-group mb-0">
@@ -109,8 +106,7 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                <div class="form-group mb-0">
+                                <div class="form-group">
                                     <label for="tags">Select Tags</label>
                                     <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="{{ $news_post->tags }}">
                                 </div>
@@ -120,13 +116,13 @@
 
                     </div>
                     <div class="col-md-8">
-
                         <div class="card card-primary card-outline">
                             <div class="card-header py-3">
-                                <h3 class="card-title">Add News Post</h3>
-                                <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Save</button>
+                                <h3 class="card-title">Post Details</h3>
+                                <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Update</button>
                             </div>
                             <div class="card-body">
+
                                 <div class="form-group">
                                     <label for="news_title">News Title</label>
                                     <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title" value="{{ $news_post->news_title }}">
@@ -136,11 +132,11 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="news_details">News Details</label>
-                                    <textarea name="news_details" id="summernote">{{ $news_post->news_details }}</textarea>
+                                    <textarea class="form-control @error('news_title') is-invalid @enderror" name="news_details" id="summernote">{{ $news_post->news_details }}</textarea>
                                 </div>
+
                             </div>
                         </div>
-
                     </div>
                 </div>
 

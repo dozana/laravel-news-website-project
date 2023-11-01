@@ -42,8 +42,8 @@
                             <div class="card-body">
                                 <div class="form-group">
                                     <label for="category_id">Select Category</label>
-                                    <select name="category_id" class="custom-select">
-                                        <option selected>- Select Category -</option>
+                                    <select name="category_id" class="custom-select @error('category_id') is-invalid @enderror">
+                                        <option value="">- Select Category -</option>
                                         @foreach($categories as $category)
                                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                                         @endforeach
@@ -52,18 +52,15 @@
 
                                 <div class="form-group">
                                     <label for="subcategory_id">Select Subcategory</label>
-                                    <select name="subcategory_id" class="custom-select">
-{{--                                        <option selected>- Select Subcategory -</option>--}}
-{{--                                        @foreach($subcategories as $subcategory)--}}
-{{--                                            <option value="{{ $subcategory->id }}">{{ $subcategory->subcategory_name }}</option>--}}
-{{--                                        @endforeach--}}
+                                    <select name="subcategory_id" class="custom-select @error('subcategory_id') is-invalid @enderror">
+                                        <option value="">- Select Subcategory -</option>
                                     </select>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="user_id">Select Writer</label>
-                                    <select name="user_id" class="custom-select">
-                                        <option selected>- Select Writer -</option>
+                                    <select name="user_id" class="custom-select @error('category_id') is-invalid @enderror">
+                                        <option value="" selected>- Select Writer -</option>
                                         @foreach($admin_user as $user)
                                             <option value="{{ $user->id }}">{{ $user->name }}</option>
                                         @endforeach
@@ -76,7 +73,7 @@
                                         <label for="show_image">Select Photo</label>
                                         <div class="input-group">
                                             <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="image" name="image">
+                                                <input type="file" class="custom-file-input @error('image') is-invalid @enderror" id="image" name="image">
                                                 <label class="custom-file-label" for="image">Choose file</label>
                                             </div>
                                         </div>
@@ -107,7 +104,7 @@
 
                                 <div class="form-group mb-0">
                                     <label for="tags">Select Tags</label>
-                                    <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="awesome">
+                                    <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="">
                                 </div>
 
                             </div>
@@ -118,7 +115,7 @@
 
                         <div class="card card-primary card-outline">
                             <div class="card-header py-3">
-                                <h3 class="card-title">Add News Post</h3>
+                                <h3 class="card-title">Post Details</h3>
                                 <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Save</button>
                             </div>
                             <div class="card-body">
@@ -129,9 +126,9 @@
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <label for="news_details">News Details</label>
-                                    <textarea name="news_details" id="summernote"></textarea>
+                                    <textarea class="form-control @error('news_title') is-invalid @enderror" name="news_details" id="summernote"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -213,5 +210,4 @@
            });
         });
     </script>
-
 @endsection
