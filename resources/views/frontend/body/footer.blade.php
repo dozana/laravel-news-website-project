@@ -1,6 +1,10 @@
 <footer class="bg-primary text-light text-center py-3">
     <div class="container">
         &copy; 2023 NEWSPORTAL. All rights reserved.
+        @php
+            $current_date = new DateTime();
+        @endphp
+        <i class="far fa-calendar-alt"></i>{{ $current_date->format('l d-m-Y') }}
     </div>
 </footer>
 

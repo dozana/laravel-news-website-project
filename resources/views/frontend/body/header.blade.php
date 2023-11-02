@@ -3,39 +3,42 @@
         <a class="navbar-brand" href="#">NEWSPORTAL</a>
 
         <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">International</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Sports
-                </a>
-                <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#">Item 1</a>
-                    <a class="dropdown-item" href="#">Item 2</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Opinion</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Business</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Education</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Tech
-                </a>
-                <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#">Item 1</a>
-                    <a class="dropdown-item" href="#">Item 2</a>
-                </div>
-            </li>
+            @php
+                $categories = \App\Models\Category::orderBy('category_name', 'ASC')->limit(7)->get();
+            @endphp
+
+            @foreach($categories as $category)
+
+                @php
+                    $subcategories = \App\Models\Subcategory::where('category_id',$category->id)->orderBy('subcategory_name', 'ASC')->get();
+                @endphp
+
+                <li class="nav-item dropdown">
+                    <a class="nav-link {{ count($subcategories) > 0 ? 'dropdown-toggle' : '' }}" href="#" id="{{ $category->category_slug }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        {{ $category->category_name }}
+                    </a>
+                    @if(count($subcategories) > 0)
+                        <div class="dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
+                            @foreach($subcategories as $subcategory)
+                            <a class="dropdown-item" href="#">{{ $subcategory->subcategory_name }}</a>
+                            @endforeach
+                        </div>
+                    @endif
+                </li>
+            @endforeach
+
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    Sports--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu" aria-labelledby="languageDropdown">--}}
+{{--                    <a class="dropdown-item" href="#">Item 1</a>--}}
+{{--                    <a class="dropdown-item" href="#">Item 2</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link" href="#">Archive</a>--}}
+{{--            </li>--}}
         </ul>
 
         <ul class="navbar-nav">
