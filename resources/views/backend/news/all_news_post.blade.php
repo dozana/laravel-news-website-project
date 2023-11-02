@@ -15,6 +15,45 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box">
+                        <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">All News Post</span>
+                            <span class="info-box-number">{{ count($news_post) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thumbs-up"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Active News</span>
+                            <span class="info-box-number">{{ count($active_news) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="clearfix hidden-md-up"></div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Inactive News</span>
+                            <span class="info-box-number">{{ count($inactive_news) }}</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-md-3">
+                    <div class="info-box mb-3">
+                        <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-bullhorn"></i></span>
+                        <div class="info-box-content">
+                            <span class="info-box-text">Breaking News</span>
+                            <span class="info-box-number">{{ count($breaking_news) }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
@@ -36,7 +75,7 @@
                                 </tr>
                                 </thead>
                                 <tbody>
-                                    @forelse($all_news_post as $key => $item)
+                                    @forelse($news_post as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
                                             <td><img width="50" src="{{ (!empty($item->image)) ? url($item->image) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
@@ -71,7 +110,7 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <td colspan="9">All Admins: {{ count($all_news_post) }}</td>
+                                       <td colspan="9">All Admins: {{ count($news_post) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>

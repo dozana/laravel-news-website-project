@@ -15,8 +15,12 @@ class NewsPostController extends Controller
 {
     public function allNewsPost()
     {
-        $all_news_post = NewsPost::latest()->get();
-        return view('backend.news.all_news_post', compact('all_news_post'));
+        $news_post = NewsPost::latest()->get();
+        $active_news = NewsPost::where('status', 1)->get();
+        $inactive_news = NewsPost::where('status', 0)->get();
+        $breaking_news = NewsPost::where('breaking_news', 1)->get();
+
+        return view('backend.news.all_news_post', compact('news_post','active_news', 'inactive_news', 'breaking_news'));
     }
 
     public function addNewsPost()
