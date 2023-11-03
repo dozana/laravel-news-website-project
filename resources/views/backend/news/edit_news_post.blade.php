@@ -55,11 +55,16 @@
                                 <div class="form-group">
                                     <label for="subcategory_id">Select Subcategory</label>
                                     <select name="subcategory_id" class="custom-select @error('subcategory_id') is-invalid @enderror">
-                                        @foreach($subcategories as $subcategory)
-                                            <option value="{{ $subcategory->id }}" {{ $subcategory->id == $news_post->subcategory_id ? 'selected' : '' }}>
-                                                {{ $subcategory->subcategory_name }}
-                                            </option>
-                                        @endforeach
+                                        @if($news_post->subcategory_id == NULL)
+                                            <option value="">Subcategory doesn't exists</option>
+                                        @else
+                                            <option disabled>- Select Subcategory -</option>
+                                            @foreach($subcategories as $subcategory)
+                                                <option value="{{ $subcategory->id }}" {{ $subcategory->id == $news_post->subcategory_id ? 'selected' : '' }}>
+                                                    {{ $subcategory->subcategory_name }}
+                                                </option>
+                                            @endforeach
+                                        @endif
                                     </select>
                                 </div>
                                 <div class="form-group">

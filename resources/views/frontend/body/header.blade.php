@@ -4,18 +4,18 @@
 
         <ul class="navbar-nav mr-auto">
             @php
-                $categories = \App\Models\Category::orderBy('category_name', 'ASC')->limit(7)->get();
+                $categories = \App\Models\Category::orderBy('id', 'ASC')->limit(12)->get();
             @endphp
 
             @foreach($categories as $category)
 
                 @php
-                    $subcategories = \App\Models\Subcategory::where('category_id',$category->id)->orderBy('subcategory_name', 'ASC')->get();
+                    $subcategories = \App\Models\Subcategory::where('category_id',$category->id)->orderBy('id', 'ASC')->get();
                 @endphp
 
                 <li class="nav-item dropdown">
                     <a class="nav-link {{ count($subcategories) > 0 ? 'dropdown-toggle' : '' }}" href="#" id="{{ $category->category_slug }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        {{ $category->category_name }}
+                        {{ ucfirst($category->category_name) }}
                     </a>
                     @if(count($subcategories) > 0)
                         <div class="dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
