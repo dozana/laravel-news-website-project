@@ -19,6 +19,12 @@ class IndexController extends Controller
     {
         $news = NewsPost::findOrFail($id);
 
-        return view('frontend.news.news_details', compact('news'));
+        $tags = $news->tags;
+        $tags_all = explode(',', $tags);
+
+        $category_id = $news->category_id;
+        $related_news = NewsPost::where('category_id', $category_id)->where('id','!=', $id)->orderBy('id','DESC')->limit(6)->get();
+
+        return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news'));
     }
 }
