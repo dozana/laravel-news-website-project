@@ -29,7 +29,15 @@
                     <div class="card-body">
                         <h4 class="mb-3">{{ $news->news_title }}</h4>
                         <img src="{{ (!empty($news->image)) ? asset($news->image) : url('https://via.placeholder.com/800x400') }}" class="img-fluid mb-2" alt="Post Image">
-                        {!! $news->news_details !!}
+
+                        <div class="mb-2">
+                            <button id="inc" class="btn btn-primary btn-sm">A+</button>
+                            <button id="dec" class="btn btn-primary btn-sm">A-</button>
+                        </div>
+
+                        <div class="news-details">
+                            <p>{!! $news->news_details !!}</p>
+                        </div>
 
                         <h6>Tags</h6>
                         <div class="mb-3">
@@ -73,4 +81,29 @@
         </div>
 
     </div>
+@endsection
+
+@section('scripts')
+    <script type="text/javascript">
+        let size = 16;
+
+        function setFontSize(s) {
+            size = s;
+            $('.news-details p').css('font-size', size + 'px');
+        }
+
+        function increaseFontSize() {
+            setFontSize(size + 5);
+        }
+
+        function decreaseFontSize() {
+            if (size > 5) {
+                setFontSize(size - 5);
+            }
+        }
+
+        $('#inc').click(increaseFontSize);
+        $('#dec').click(decreaseFontSize);
+        setFontSize(size);
+    </script>
 @endsection
