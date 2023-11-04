@@ -62,7 +62,7 @@
                             <div class="card mb-3">
                                 <div class="card-body">
                                     <img class="img-fluid mb-4" src="{{ asset($nine->image) }}" alt="">
-                                    <h5>{{ $nine->news_title }}</h5>
+                                    <h5><a href="{{ url('/news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">{{ $nine->news_title }}</a></h5>
                                     <small><i class="far fa-calendar-alt"></i> {{ $nine->created_at }}</small>
                                 </div>
                             </div>

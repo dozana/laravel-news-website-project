@@ -20,9 +20,12 @@ use App\Http\Controllers\Backend\NewsPostController;
 
 require __DIR__.'/auth.php';
 
+// Access for All
 Route::get('/', [IndexController::class, 'index']);
 Route::get('/admin/login', [AdminController::class, 'adminLogin'])->middleware(RedirectIfAuthenticated::class)->name('admin.login');
 Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
+
+Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails']);
 
 Route::middleware(['auth'])->group(function () {
 
