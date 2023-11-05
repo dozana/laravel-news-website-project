@@ -43,4 +43,11 @@ class IndexController extends Controller
 
         return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news', 'new_news_post', 'news_popular'));
     }
+
+    public function categoryWiseNews($id, $slug)
+    {
+        $news = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id','DESC')->get();
+
+        return view('frontend.news.news_category', compact('news'));
+    }
 }

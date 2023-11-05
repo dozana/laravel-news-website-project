@@ -14,15 +14,15 @@
                 @endphp
 
                 <li class="nav-item dropdown">
-                    <a class="nav-link {{ count($subcategories) > 0 ? 'dropdown-toggle' : '' }}" href="#" id="{{ $category->category_slug }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <a href="{{ url('news/category/'.$category->id.'/'.$category->category_slug) }}" class="nav-link {{ count($subcategories) > 0 ? 'dropdown-toggle' : '' }}" id="{{ $category->category_slug }}" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         {{ ucfirst($category->category_name) }}
                     </a>
                     @if(count($subcategories) > 0)
                         <div class="dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
                             @foreach($subcategories as $subcategory)
-{{--                                <a class="dropdown-item" href="{{ url('/news/details/'.$subcategory->id.'/'.$subcategory->subcategory_name) }}">--}}
-{{--                                    {{ $subcategory->subcategory_name }}--}}
-{{--                                </a>--}}
+                                <a class="dropdown-item" href="{{ url('/news/details/'.$subcategory->id.'/'.$subcategory->subcategory_name) }}">
+                                    {{ $subcategory->subcategory_name }}
+                                </a>
 
                                 <a class="dropdown-item" href="#">{{ $subcategory->subcategory_name }}</a>
                             @endforeach
