@@ -13,7 +13,11 @@ class IndexController extends Controller
 {
     public function index()
     {
-        return view('frontend.index');
+        // popular news
+        $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.index', compact('new_news_post', 'news_popular'));
     }
 
     public function newsDetails($id, $slug)
@@ -26,12 +30,17 @@ class IndexController extends Controller
         $category_id = $news->category_id;
         $related_news = NewsPost::where('category_id', $category_id)->where('id','!=', $id)->orderBy('id','DESC')->limit(6)->get();
 
+        // view count
         $news_key = 'blog' . $news->id;
         if(!Session::has($news_key)) {
             $news->increment('view_count');
             Session::put($news_key, 1);
         }
 
-        return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news'));
+        // popular news
+        $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news', 'new_news_post', 'news_popular'));
     }
 }

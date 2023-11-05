@@ -18,16 +18,9 @@
                 </nav>
                 <div class="card mb-4">
                     <div class="card-header">
-                        <div class="d-flex align-items-center">
-                            <img width="60" src="{{ (!empty($news->user->photo)) ? url('upload/admin_images/'.$news->user->photo) : url('upload/no_image.png') }}" alt="Author Image">
-                            <ul class="list-unstyled mb-0 p-2">
-                                <li>Posted By {{ $news['user']['name'] }}</li>
-                                <li><i class="far fa-clock"></i>Updated: {{ $news->created_at->format('l M d Y') }} / <i class="far fa-eye"></i> {{ $news->view_count }} Read</li>
-                            </ul>
-                        </div>
+                        <h4 class="mb-0">{{ $news->news_title }}</h4>
                     </div>
                     <div class="card-body">
-                        <h4 class="mb-3">{{ $news->news_title }}</h4>
                         <img src="{{ (!empty($news->image)) ? asset($news->image) : url('https://via.placeholder.com/800x400') }}" class="img-fluid mb-2" alt="Post Image">
 
                         <div class="mb-2">
@@ -54,6 +47,15 @@
                             <a href="#" class="text-dark"><i class="fab fa-pinterest fa-lg ml-2"></i></a>
                         </div>
                     </div>
+                    <div class="card-footer">
+                        <div class="d-flex align-items-center">
+                            <img width="60" src="{{ (!empty($news->user->photo)) ? url('upload/admin_images/'.$news->user->photo) : url('upload/no_image.png') }}" alt="Author Image">
+                            <ul class="list-unstyled mb-0 p-2">
+                                <li>Posted By {{ $news['user']['name'] }}</li>
+                                <li><i class="far fa-clock"></i>Updated: {{ $news->created_at->format('l M d Y') }} / <i class="far fa-eye"></i> {{ $news->view_count }} Read</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
 
                 <h5 class="mb-3">Related News</h5>
@@ -76,7 +78,62 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
-                dsaf
+                <ul class="nav nav-tabs" id="myTabs">
+                    <li class="nav-item">
+                        <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Latest</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" data-bs-toggle="tab" href="#tab2">Popular</a>
+                    </li>
+                </ul>
+                <div class="tab-content mb-4">
+                    <div class="tab-pane active" id="tab1">
+                        <table class="table table-bordered mt-2 mb-0">
+                            <tbody>
+                            @foreach($new_news_post as $key => $news_item)
+                                <tr>
+                                    <td class="text-center align-middle bg-light">
+                                        {{ $key + 1 }}
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <a href="{{ url('/news/details/'.$news_item->id.'/'.$news_item->news_title_slug) }}">
+                                            <img style="width: 80px; height: 40px" class="img-fluid" src="{{ asset($news_item->image) }}" alt="{{ $news_item->news_title }}">
+                                        </a>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="{{ url('/news/details/'.$news_item->id.'/'.$news_item->news_title_slug) }}">
+                                            {{ $news_item->news_title }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="tab-pane" id="tab2">
+                        <table class="table table-bordered mt-2 mb-0">
+                            <tbody>
+                            @foreach($news_popular as $key => $popular_item)
+                                <tr>
+                                    <td class="text-center align-middle bg-light">
+                                        {{ $key + 1 }}
+                                    </td>
+                                    <td class="text-center align-middle">
+                                        <a href="{{ url('/news/details/'.$popular_item->id.'/'.$popular_item->news_title_slug) }}">
+                                            <img style="width: 80px; height: 40px" class="img-fluid" src="{{ asset($popular_item->image) }}" alt="{{ $popular_item->news_title }}">
+                                        </a>
+                                    </td>
+                                    <td class="align-middle">
+                                        <a href="{{ url('/news/details/'.$popular_item->id.'/'.$popular_item->news_title_slug) }}">
+                                            {{ $popular_item->news_title }}
+                                        </a>
+                                    </td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -85,6 +142,7 @@
 
 @section('scripts')
     <script type="text/javascript">
+        // change content font size
         let size = 16;
 
         function setFontSize(s) {
@@ -106,4 +164,29 @@
         $('#dec').click(decreaseFontSize);
         setFontSize(size);
     </script>
+
+    <script>
+        // dynamic tabs
+        const tabLinks = document.querySelectorAll('.nav-link');
+        tabLinks.forEach((link) => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Remove the 'active' class from all tab links and tab content
+                tabLinks.forEach((link) => {
+                    link.classList.remove('active');
+                });
+                const tabContent = document.querySelectorAll('.tab-pane');
+                tabContent.forEach((content) => {
+                    content.classList.remove('active');
+                });
+
+                // Add the 'active' class to the clicked tab link and its corresponding tab content
+                link.classList.add('active');
+                const targetTab = document.querySelector(link.getAttribute('href'));
+                targetTab.classList.add('active');
+            });
+        });
+    </script>
+
 @endsection
