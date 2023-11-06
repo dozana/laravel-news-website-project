@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
 use App\Models\NewsPost;
+use App\Models\Subcategory;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
@@ -47,7 +49,26 @@ class IndexController extends Controller
     public function categoryWiseNews($id, $slug)
     {
         $news = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id','DESC')->get();
+        $breadcrumb_category = Category::where('id', $id)->first();
+        $news_two = NewsPost::where('status', 1)->where('category_id', $id)->orderBy('id','DESC')->limit(2)->get();
 
-        return view('frontend.news.news_category', compact('news'));
+        // popular news
+        $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.news.news_category', compact('news','breadcrumb_category','news_two','new_news_post','news_popular'));
+    }
+
+    public function subcategoryWiseNews($id, $slug)
+    {
+        $news = NewsPost::where('status', 1)->where('subcategory_id', $id)->orderBy('id','DESC')->get();
+        $breadcrumb_subcategory = Subcategory::where('id', $id)->first();
+        $news_two = NewsPost::where('status', 1)->where('subcategory_id', $id)->orderBy('id','DESC')->limit(2)->get();
+
+        // popular news
+        $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.news.news_subcategory', compact('news','breadcrumb_subcategory','news_two','new_news_post','news_popular'));
     }
 }

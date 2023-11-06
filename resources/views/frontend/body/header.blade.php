@@ -20,11 +20,9 @@
                     @if(count($subcategories) > 0)
                         <div class="dropdown-menu" aria-labelledby="{{ $category->category_slug }}">
                             @foreach($subcategories as $subcategory)
-                                <a class="dropdown-item" href="{{ url('/news/details/'.$subcategory->id.'/'.$subcategory->subcategory_name) }}">
+                                <a class="dropdown-item" href="{{ url('news/subcategory/'.$subcategory->id.'/'.$subcategory->subcategory_slug) }}">
                                     {{ $subcategory->subcategory_name }}
                                 </a>
-
-                                <a class="dropdown-item" href="#">{{ $subcategory->subcategory_name }}</a>
                             @endforeach
                         </div>
                     @endif

@@ -128,7 +128,7 @@
                                 </div>
                                 <div class="form-group mb-0">
                                     <label for="news_details">News Details</label>
-                                    <textarea class="form-control @error('news_title') is-invalid @enderror" name="news_details" id="summernote"></textarea>
+                                    <textarea class="form-control summernote @error('news_title') is-invalid @enderror" name="news_details"></textarea>
                                 </div>
                             </div>
                         </div>
@@ -181,8 +181,7 @@
     <script src="{{ asset('backend/assets/plugins/summernote/summernote-bs4.min.js') }}"></script>
     <script>
         $(function () {
-            // Summernote
-            $('#summernote').summernote();
+            $('.summernote').summernote();
         });
     </script>
 

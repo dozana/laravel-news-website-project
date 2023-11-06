@@ -26,6 +26,7 @@ Route::get('/admin/login', [AdminController::class, 'adminLogin'])->middleware(R
 Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->name('admin.logout.page');
 Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails']);
 Route::get('/news/category/{id}/{slug}', [IndexController::class, 'categoryWiseNews']);
+Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subcategoryWiseNews']);
 
 
 
