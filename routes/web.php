@@ -11,6 +11,7 @@ use App\Http\Controllers\Frontend\IndexController;
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
+use App\Http\Controllers\Backend\BannerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -105,6 +106,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
 
         Route::get('/inactive/news/post/{id}','inactiveNewsPost')->name('inactive.news.post');
         Route::get('/active/news/post/{id}','activeNewsPost')->name('active.news.post');
+    });
+
+    // Banner all Route
+    Route::controller(BannerController::class)->group(function () {
+        Route::get('/all/banner','allBanner')->name('all.banner');
+        Route::get('/add/banner','addBanner')->name('add.banner');
+        Route::post('/store/banner','storeBanner')->name('store.banner');
+        Route::get('/edit/banner/{id}','editBanner')->name('edit.banner');
+        Route::post('/update/banner/{id}','updateBanner')->name('update.banner');
+        Route::get('/delete/banner/{id}','deleteBanner')->name('delete.banner');
     });
 
 });
