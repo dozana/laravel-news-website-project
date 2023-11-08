@@ -6,11 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Subcategory;
+use DateTime;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
-use DateTime;
+
 
 class IndexController extends Controller
 {
@@ -75,10 +76,14 @@ class IndexController extends Controller
 
     public function searchByDate(Request $request)
     {
-        $date = new DateTime($request->date);
-        $format_date = $date->format('d-m-Y');
+        $date = new DateTime($request->date); // yyyy-mm-dd
+        $format_date = $date->format('d-m-Y'); // dd-mm-yyyy
         $news = NewsPost::where('post_date', $format_date)->latest()->get();
 
-        return view('frontend.news.search_by_date', compact('news'));
+        // popular news
+        $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
+        $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
+
+        return view('frontend.news.search_by_date', compact('news','format_date', 'new_news_post', 'news_popular'));
     }
 }

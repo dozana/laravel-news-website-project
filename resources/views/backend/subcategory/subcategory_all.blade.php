@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('add.subcategory') }}" class="btn btn-primary">Add Subcategory</a>
+                    <a href="{{ route('add.subcategory') }}" class="btn btn-primary mb-3">Add Subcategory</a>
                 </div>
             </div>
         </div>

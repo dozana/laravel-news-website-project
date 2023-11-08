@@ -82,7 +82,10 @@
                                             <td>{{ Str::limit($item->news_title, 20) }}</td>
                                             <td>{{ $item['category']['category_name'] }}</td>
                                             <td>{{ $item['user']['name'] }}</td>
-                                            <td>{{ \Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</td>
+                                            <td>
+                                                <div>{{ \Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</div>
+                                                <div><small>{{ $item->post_date }}</small></div>
+                                            </td>
                                             <td class="text-center">
                                                 @if($item->status == 1)
                                                     <span class="badge bg-success"><i class="far fa-smile"></i> Active</span>
@@ -117,7 +120,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('add.news.post') }}" class="btn btn-primary">Add News Post</a>
+                    <a href="{{ route('add.news.post') }}" class="btn btn-primary mb-3">Add News Post</a>
                 </div>
             </div>
         </div>
