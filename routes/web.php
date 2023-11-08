@@ -12,6 +12,7 @@ use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\BannerController;
+use App\Http\Controllers\Backend\PhotoGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,6 @@ Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails'])
 Route::get('/news/category/{id}/{slug}', [IndexController::class, 'categoryWiseNews']);
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subcategoryWiseNews']);
 Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
-
 
 
 Route::middleware(['auth'])->group(function () {
@@ -115,5 +115,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::post('/update/banner/{id}','updateBanner')->name('update.banner');
     });
 
-});
+    // Photo Gallery all Route
+    Route::controller(PhotoGalleryController::class)->group(function () {
+        Route::get('/all/photo/gallery','allPhotoGallery')->name('all.photo.gallery');
+        Route::get('/add/photo','addPhoto')->name('add.photo');
+        Route::get('/delete/photo/{id}','deletePhoto')->name('delete.photo');
 
+    });
+
+});
