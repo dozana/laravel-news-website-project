@@ -111,10 +111,13 @@
                 <div class="card mb-4">
                     <div class="card-header">Old News</div>
                     <div class="card-body">
-                        <div class="input-group">
-                            <input type="date" class="form-control" placeholder="Recipient's username" aria-label="Recipient's username" aria-describedby="button-addon2">
-                            <button class="btn btn-outline-secondary" type="button" id="button-addon2">Search</button>
-                        </div>
+                        <form action="{{ route('search-by-date') }}" method="post">
+                            @csrf
+                            <div class="input-group">
+                                <input type="date" class="form-control">
+                                <button type="submit" class="btn btn-outline-secondary">Search</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
 

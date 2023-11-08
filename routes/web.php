@@ -28,6 +28,7 @@ Route::get('/admin/logout/page', [AdminController::class, 'adminLogoutPage'])->n
 Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails']);
 Route::get('/news/category/{id}/{slug}', [IndexController::class, 'categoryWiseNews']);
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subcategoryWiseNews']);
+Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
 
 
 

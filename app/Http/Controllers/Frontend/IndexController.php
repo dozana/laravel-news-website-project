@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
+use DateTime;
 
 class IndexController extends Controller
 {
@@ -70,5 +71,14 @@ class IndexController extends Controller
         $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
 
         return view('frontend.news.news_subcategory', compact('news','breadcrumb_subcategory','news_two','new_news_post','news_popular'));
+    }
+
+    public function searchByDate(Request $request)
+    {
+        $date = new DateTime($request->date);
+        $format_date = $date->format('d-m-Y');
+        $news = NewsPost::where('post_date', $format_date)->latest()->get();
+
+        return view('frontend.news.search_by_date', compact('news'));
     }
 }
