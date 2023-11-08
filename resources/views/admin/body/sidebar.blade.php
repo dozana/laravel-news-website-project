@@ -136,15 +136,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('all.banner') }}" class="nav-link">
+                                <a href="" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>All Banner</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.banner') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Banner</p>
                                 </a>
                             </li>
                         </ul>

@@ -1,5 +1,12 @@
 @extends('frontend.home_dashboard')
 
+@php
+    $news_slider = \App\Models\NewsPost::where('status', 1)->where('top_slider', 1)->limit(3)->get();
+    $section_three = \App\Models\NewsPost::where('status', 1)->where('first_section_three', 1)->limit(3)->get();
+    $section_nine = \App\Models\NewsPost::where('status', 1)->where('first_section_nine', 1)->limit(9)->get();
+    $banner = App\Models\Banner::find(1);
+@endphp
+
 @section('home')
     <div class="container flex-grow">
 
@@ -7,9 +14,7 @@
             <div class="col-lg-8 col-md-8">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        @php
-                            $news_slider = \App\Models\NewsPost::where('status', 1)->where('top_slider', 1)->limit(3)->get();
-                        @endphp
+                        <!-- Slider -->
                         <div id="carouselExampleCaptions" class="carousel slide mb-4">
                             <div class="carousel-indicators">
                                 @foreach($news_slider as $key => $slider)
@@ -43,9 +48,7 @@
                         </div>
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        @php
-                            $section_three = \App\Models\NewsPost::where('status', 1)->where('first_section_three', 1)->limit(3)->get();
-                        @endphp
+                        <!-- Section Three -->
                         <table class="table table-bordered">
                             <tbody>
                             @foreach($section_three as $three)
@@ -63,9 +66,15 @@
                     </div>
                 </div>
                 <div class="row">
-                    @php
-                        $section_nine = \App\Models\NewsPost::where('status', 1)->where('first_section_nine', 1)->limit(9)->get();
-                    @endphp
+                    <!-- Banners -->
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ asset($banner->home_one) }}" alt="" class="img-fluid mb-3">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ asset($banner->home_two) }}" alt="" class="img-fluid mb-3">
+                    </div>
+                </div>
+                <div class="row">
                     @foreach($section_nine as $nine)
                         <div class="col-lg-4 col-md-4">
                             <div class="card mb-3">
@@ -81,6 +90,15 @@
                             </div>
                         </div>
                     @endforeach
+                </div>
+                <div class="row">
+                    <!-- Banners -->
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ asset($banner->home_three) }}" alt="" class="img-fluid mb-3">
+                    </div>
+                    <div class="col-lg-6 col-md-6">
+                        <img src="{{ asset($banner->home_four) }}" alt="" class="img-fluid mb-3">
+                    </div>
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">

@@ -21,6 +21,7 @@ class BannerController extends Controller
     {
         $banner = Banner::findOrFail($id);
 
+        /*
         if ($request->file('home_one')) {
             $image1 = $request->file('home_one');
             @unlink(public_path($banner->home_one));
@@ -67,6 +68,34 @@ class BannerController extends Controller
             $name_gen6 = hexdec(uniqid()) . '.' . $image6->getClientOriginalExtension();
             Image::make($image6)->resize(725, 100)->save('upload/banner/' . $name_gen6);
             $banner->update(['news_details_one' => 'upload/banner/' . $name_gen6]);
+        }
+        */
+
+        $image_fields = [
+            'home_one',
+            'home_two',
+            'home_three',
+            'home_four',
+            'news_category_one',
+            'news_details_one',
+        ];
+
+        foreach ($image_fields as $field) {
+            if ($request->hasFile($field)) {
+                $image = $request->file($field);
+                $image_path = 'upload/banner/' . hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+
+                // Delete the old image if it exists
+                if (file_exists(public_path($banner->$field))) {
+                    @unlink(public_path($banner->$field));
+                }
+
+                // Resize and save the new image
+                Image::make($image)->resize(725, 100)->save($image_path);
+
+                // Update the field in the database
+                $banner->update([$field => $image_path]);
+            }
         }
 
         $notification = [
