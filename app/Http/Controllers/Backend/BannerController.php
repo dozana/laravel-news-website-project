@@ -16,4 +16,64 @@ class BannerController extends Controller
 
         return view('backend.banner.banner_update', compact('banner'));
     }
+
+    public function updateBanner(Request $request, $id)
+    {
+        $banner = Banner::findOrFail($id);
+
+        if ($request->file('home_one')) {
+            $image1 = $request->file('home_one');
+            @unlink(public_path($banner->home_one));
+            $name_gen1 = hexdec(uniqid()) . '.' . $image1->getClientOriginalExtension();
+            Image::make($image1)->resize(725, 100)->save('upload/banner/' . $name_gen1);
+            $banner->update(['home_one' => 'upload/banner/' . $name_gen1]);
+        }
+
+        if ($request->file('home_two')) {
+            $image2 = $request->file('home_two');
+            @unlink(public_path($banner->home_two));
+            $name_gen2 = hexdec(uniqid()) . '.' . $image2->getClientOriginalExtension();
+            Image::make($image2)->resize(725, 100)->save('upload/banner/' . $name_gen2);
+            $banner->update(['home_two' => 'upload/banner/' . $name_gen2]);
+        }
+
+        if ($request->file('home_three')) {
+            $image3 = $request->file('home_three');
+            @unlink(public_path($banner->home_three));
+            $name_gen3 = hexdec(uniqid()) . '.' . $image3->getClientOriginalExtension();
+            Image::make($image3)->resize(725, 100)->save('upload/banner/' . $name_gen3);
+            $banner->update(['home_three' => 'upload/banner/' . $name_gen3]);
+        }
+
+        if ($request->file('home_four')) {
+            $image4 = $request->file('home_four');
+            @unlink(public_path($banner->home_four));
+            $name_gen4 = hexdec(uniqid()) . '.' . $image4->getClientOriginalExtension();
+            Image::make($image4)->resize(725, 100)->save('upload/banner/' . $name_gen4);
+            $banner->update(['home_four' => 'upload/banner/' . $name_gen4]);
+        }
+
+        if ($request->file('news_category_one')) {
+            $image5 = $request->file('news_category_one');
+            @unlink(public_path($banner->news_category_one));
+            $name_gen5 = hexdec(uniqid()) . '.' . $image5->getClientOriginalExtension();
+            Image::make($image5)->resize(725, 100)->save('upload/banner/' . $name_gen5);
+            $banner->update(['news_category_one' => 'upload/banner/' . $name_gen5]);
+        }
+
+        if ($request->file('news_details_one')) {
+            $image6 = $request->file('news_details_one');
+            @unlink(public_path($banner->news_details_one));
+            $name_gen6 = hexdec(uniqid()) . '.' . $image6->getClientOriginalExtension();
+            Image::make($image6)->resize(725, 100)->save('upload/banner/' . $name_gen6);
+            $banner->update(['news_details_one' => 'upload/banner/' . $name_gen6]);
+        }
+
+        $notification = [
+            'message' => 'Banner Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
+    }
 }

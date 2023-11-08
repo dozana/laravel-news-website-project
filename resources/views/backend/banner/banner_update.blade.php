@@ -21,7 +21,7 @@
                             <h3 class="card-title">Update Banner</h3>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('update.banner', $banner->id) }}">
+                            <form method="post" action="{{ route('update.banner', $banner->id) }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="row">
@@ -39,7 +39,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="show_image_1">Home Banner One</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_1" src="{{ (!empty($banner->home_two)) ? url('upload/banner/'.$banner->home_two) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_1" src="{{ (!empty($banner->home_one)) ? url($banner->home_one) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>
@@ -59,7 +59,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="show_image_2">Home Banner Two</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_2" src="{{ (!empty($banner->home_two)) ? url('upload/banner/'.$banner->home_two) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_2" src="{{ (!empty($banner->home_two)) ? url($banner->home_two) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>
@@ -79,7 +79,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="show_image_3">Home Banner Three</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_3" src="{{ (!empty($banner->home_three)) ? url('upload/banner/'.$banner->home_three) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_3" src="{{ (!empty($banner->home_three)) ? url($banner->home_three) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>
@@ -99,7 +99,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="show_image_4">Home Banner Four</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_4" src="{{ (!empty($banner->home_four)) ? url('upload/banner/'.$banner->home_four) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="show_image_4" src="{{ (!empty($banner->home_four)) ? url($banner->home_four) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>
@@ -119,7 +119,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="news_category_one">News Category Banner</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="news_category_one" src="{{ (!empty($banner->home_four)) ? url('upload/banner/'.$banner->home_four) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="news_category_one" src="{{ (!empty($banner->news_category_one)) ? url($banner->news_category_one) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>
@@ -139,7 +139,7 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="news_details_one">News Details Banner</label>
-                                            <img class="profile-user-img img-fluid img-square mb-2" id="news_details_one" src="{{ (!empty($banner->home_four)) ? url('upload/banner/'.$banner->home_four) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
+                                            <img class="profile-user-img img-fluid img-square mb-2" id="news_details_one" src="{{ (!empty($banner->news_details_one)) ? url($banner->news_details_one) : url('upload/no_image.png') }}" alt="" style="width: 400px; height: 60px;">
                                         </div>
                                     </div>
                                 </div>

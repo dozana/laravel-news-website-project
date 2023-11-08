@@ -30,7 +30,7 @@
                                 <p>All News Post</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="far fa-file-alt"></i>
                             </div>
                             <a href="{{ route('all.news.post') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -42,7 +42,7 @@
                                 <p>Active News</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="far fa-thumbs-up"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -54,7 +54,7 @@
                                 <p>Inactive News</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="far fa-thumbs-down"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -66,7 +66,7 @@
                                 <p>Breaking News</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-bullhorn"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -78,7 +78,7 @@
                                 <p>Categories</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-bag"></i>
+                                <i class="fas fa-stream"></i>
                             </div>
                             <a href="{{ route('all.category') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -90,7 +90,7 @@
                                 <p>Subcategories</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-stats-bars"></i>
+                                <i class="fas fa-stream"></i>
                             </div>
                             <a href="{{ route('all.subcategory') }}" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -102,7 +102,7 @@
                                 <p>Tags</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-pie-graph"></i>
+                                <i class="fas fa-tags"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -114,7 +114,7 @@
                                 <p>Admins</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                                <i class="fas fa-users-cog"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
@@ -126,7 +126,19 @@
                                 <p>Users</p>
                             </div>
                             <div class="icon">
-                                <i class="ion ion-person-add"></i>
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-6">
+                        <div class="small-box bg-info">
+                            <div class="inner">
+                                <h3>{{ count($users) }}</h3>
+                                <p>Ad</p>
+                            </div>
+                            <div class="icon">
+                                <i class="fas fa-ad"></i>
                             </div>
                             <a href="#" class="small-box-footer">View all <i class="fas fa-arrow-circle-right"></i></a>
                         </div>
