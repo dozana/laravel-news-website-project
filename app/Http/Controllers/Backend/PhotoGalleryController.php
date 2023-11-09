@@ -17,4 +17,9 @@ class PhotoGalleryController extends Controller
 
         return view('backend.photo-gallery.all_photo', compact('photo'));
     }
+
+    public function addPhotoGallery()
+    {
+        return view('backend.photo-gallery.add_photo');
+    }
 }

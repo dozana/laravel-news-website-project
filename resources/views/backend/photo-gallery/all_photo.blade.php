@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="m-0">Photo Gallery</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All News Post</h3>
+                            <h3 class="card-title">All Photo Gallery</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
@@ -59,7 +59,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('add.photo') }}" class="btn btn-primary mb-3">Add New Photo</a>
+                    <a href="{{ route('add.photo.gallery') }}" class="btn btn-primary mb-3">Add New Photo</a>
                 </div>
             </div>
         </div>

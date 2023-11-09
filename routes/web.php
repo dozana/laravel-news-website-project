@@ -118,8 +118,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Photo Gallery all Route
     Route::controller(PhotoGalleryController::class)->group(function () {
         Route::get('/all/photo/gallery','allPhotoGallery')->name('all.photo.gallery');
-        Route::get('/add/photo','addPhoto')->name('add.photo');
-        Route::get('/delete/photo/{id}','deletePhoto')->name('delete.photo');
+        Route::get('/add/photo','addPhotoGallery')->name('add.photo.gallery');
+        Route::get('/delete/photo/{id}','deletePhotoGallery')->name('delete.photo.gallery');
 
     });
 
