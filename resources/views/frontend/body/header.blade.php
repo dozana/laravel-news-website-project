@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
-        <a class="navbar-brand" href="{{ url('/') }}">NEWSPORTAL</a>
+        <a class="navbar-brand" href="{{ url('/') }}">NEWS</a>
 
         <ul class="navbar-nav mr-auto">
             @php

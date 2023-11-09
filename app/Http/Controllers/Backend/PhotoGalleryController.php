@@ -25,6 +25,10 @@ class PhotoGalleryController extends Controller
 
     public function storePhotoGallery(Request $request)
     {
+        $request->validate([
+            'multi_image' => 'required',
+        ]);
+
         $images = $request->file('multi_image');
 
         foreach ($images as $image) {
@@ -53,13 +57,12 @@ class PhotoGalleryController extends Controller
         return view('backend.photo-gallery.edit_photo', compact('photo_gallery'));
     }
 
-    public function updatePhotoGallery(Request $request, $id)
+    public function updatePhotoGallery(Request $request)
     {
-        // Find the existing photo record
-        $photo = PhotoGallery::findOrFail($id);
+        $photo = PhotoGallery::findOrFail($request->id);
 
         // Check if a new image file is provided
-        if ($request->file('multi_image')) {
+        if ($request->hasFile('multi_image')) {
             // Get the old photo's path
             $old_photo_path = $photo->photo_gallery;
 
@@ -86,6 +89,24 @@ class PhotoGalleryController extends Controller
             ];
 
             return redirect()->route('all.photo.gallery')->with($notification);
+        } else {
+            return redirect()->route('all.photo.gallery');
         }
+    }
+
+    public function deletePhotoGallery($id)
+    {
+        $photo = PhotoGallery::findOrFail($id);
+        $img = $photo->photo_gallery;
+        unlink($img);
+
+        PhotoGallery::findOrFail($id)->delete();
+
+        $notification = [
+            'message' => 'Photo Gallery Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

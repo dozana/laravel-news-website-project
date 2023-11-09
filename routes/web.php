@@ -118,11 +118,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     // Photo Gallery all Route
     Route::controller(PhotoGalleryController::class)->group(function () {
         Route::get('/all/photo/gallery','allPhotoGallery')->name('all.photo.gallery');
-        Route::get('/add/photo','addPhotoGallery')->name('add.photo.gallery');
+        Route::get('/add/photo/gallery','addPhotoGallery')->name('add.photo.gallery');
         Route::post('/store/photo/gallery','storePhotoGallery')->name('store.photo.gallery');
-        Route::get('/edit/photo/{id}','editPhotoGallery')->name('edit.photo.gallery');
-        Route::post('/update/photo/{id}','updatePhotoGallery')->name('update.photo.gallery');
-        Route::get('/delete/photo/{id}','deletePhotoGallery')->name('delete.photo.gallery');
+        Route::get('/edit/photo/gallery/{id}','editPhotoGallery')->name('edit.photo.gallery');
+        Route::post('/update/photo/gallery/{id}','updatePhotoGallery')->name('update.photo.gallery');
+        Route::get('/delete/photo/gallery/{id}','deletePhotoGallery')->name('delete.photo.gallery');
     });
 
 });

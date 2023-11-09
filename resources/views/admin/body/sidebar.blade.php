@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
-        <img src="{{ asset('backend/assets/dist/img/AdminLTELogo.png') }}" alt="NEWS Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-        <span class="brand-text font-weight-light">NEWSPORTAL</span>
+        <img src="{{ asset('backend/assets/dist/img/logo.png') }}" alt="XURMA" class="brand-image img-circle elevation-3">
+        <span class="brand-text font-weight-light">CMS</span>
     </a>
 
     <div class="sidebar">
@@ -14,7 +14,7 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ (!empty($user_data->photo)) ? url('upload/admin_images/'.$user_data->photo) : url('upload/no_image.png') }}" class="img-circle elevation-2" alt="{{ $user_data->name }}">
+                <img src="{{ (!empty($user_data->photo)) ? url('upload/admin_images/'.$user_data->photo) : url('upload/no_image.png') }}" class="img-circle bg-white elevation-2" alt="{{ $user_data->name }}">
             </div>
             <div class="info">
                 <a href="{{ route('admin.profile') }}" class="d-block">{{ $user_data->name }}</a>

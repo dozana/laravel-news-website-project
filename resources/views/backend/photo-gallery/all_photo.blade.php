@@ -62,3 +62,8 @@
         </div>
     </div>
 @endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/assets/dist/js/code.js') }}"></script>
+@endsection

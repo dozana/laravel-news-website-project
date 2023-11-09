@@ -5,6 +5,7 @@
     $section_three = \App\Models\NewsPost::where('status', 1)->where('first_section_three', 1)->limit(3)->get();
     $section_nine = \App\Models\NewsPost::where('status', 1)->where('first_section_nine', 1)->limit(9)->get();
     $banner = App\Models\Banner::find(1);
+    $photo_gallery = \App\Models\PhotoGallery::latest()->get();
 @endphp
 
 @section('home')
@@ -74,6 +75,7 @@
                         <img src="{{ asset($banner->home_two) }}" alt="" class="img-fluid mb-3">
                     </div>
                 </div>
+                <h5 class="mb-4 py-2 bg-light">Posts</h5>
                 <div class="row">
                     @foreach($section_nine as $nine)
                         <div class="col-lg-4 col-md-4">
@@ -91,21 +93,12 @@
                         </div>
                     @endforeach
                 </div>
-                <div class="row">
-                    <!-- Banners -->
-                    <div class="col-lg-6 col-md-6">
-                        <img src="{{ asset($banner->home_three) }}" alt="" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <img src="{{ asset($banner->home_four) }}" alt="" class="img-fluid mb-3">
-                    </div>
-                </div>
             </div>
             <div class="col-lg-4 col-md-4">
                 <div class="card mb-4">
                     <div class="card-header">Live Stream</div>
-                    <div class="card-body">
-                        <img src="https://via.placeholder.com/320x220" class="img-fluid" alt="">
+                    <div class="card-body p-0">
+                        <img src="https://via.placeholder.com/640x220" class="img-fluid" alt="">
                     </div>
                 </div>
                 <div class="card mb-4">
@@ -178,6 +171,67 @@
                     </div>
                 </div>
 
+            </div>
+        </div>
+
+        <div class="row">
+            <!-- Banners -->
+            <div class="col-lg-6 col-md-6">
+                <img src="{{ asset($banner->home_three) }}" alt="" class="img-fluid mb-3">
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <img src="{{ asset($banner->home_four) }}" alt="" class="img-fluid mb-3">
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-8 col-md-8">
+                <h5 class="mb-4 py-2 bg-light">Photo Gallery</h5>
+                <div class="row">
+                    @foreach($photo_gallery as $item)
+                        <div class="col-lg-3 col-md-3">
+                            <div class="card mb-3">
+                                <div class="card-body p-0">
+                                    <img src="{{ asset($item->photo_gallery) }}" class="img-fluid" alt="" data-bs-toggle="modal" data-bs-target="#myModal{{ $item->id }}">
+                                </div>
+                                <div class="card-footer text-center">
+                                    <small>{{ $item->post_date }}</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-body">
+                                        <img src="{{ asset($item->photo_gallery) }}" class="img-fluid" alt="">
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4">
+                <h5 class="mb-4 py-2 bg-light">Video Gallery</h5>
+                <table class="table table-bordered">
+                    <tbody>
+                    @foreach($section_three as $three)
+                        <tr>
+                            <td class="align-middle text-center">
+                                <a href="{{ url('/news/details/'.$three->id.'/'.$three->news_title_slug) }}">
+                                    <img style="width: 80px; height: 40px;" class="img-fluid" src="{{ asset($three->image) }}" alt="{{ $three->news_title }}">
+                                </a>
+                            </td>
+                            <td class="align-middle"><a href="{{ url('/news/details/'.$three->id.'/'.$three->news_title_slug) }}">{{ $three->news_title }}</a></td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
 
