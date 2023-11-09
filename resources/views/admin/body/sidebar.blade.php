@@ -82,29 +82,6 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users-cog"></i>
-                            <p>
-                                Admins
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.admin') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Admin</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.admin') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Admin</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
                             <i class="nav-icon far fa-file-alt"></i>
                             <p>
                                 News Post
@@ -161,7 +138,53 @@
                             <li class="nav-item">
                                 <a href="{{ route('add.photo.gallery') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Add New Gallery</p>
+                                    <p>Add Photo Gallery</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fab fa-youtube"></i>
+                            <p>
+                                Video Gallery
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.video.gallery') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Video Gallery</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.video.gallery') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Video Gallery</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-users-cog"></i>
+                            <p>
+                                Admins
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.admin') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Admin</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.admin') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Admin</p>
                                 </a>
                             </li>
                         </ul>

@@ -13,6 +13,7 @@ use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
+use App\Http\Controllers\Backend\VideoGalleryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -123,6 +124,16 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/photo/gallery/{id}','editPhotoGallery')->name('edit.photo.gallery');
         Route::post('/update/photo/gallery/{id}','updatePhotoGallery')->name('update.photo.gallery');
         Route::get('/delete/photo/gallery/{id}','deletePhotoGallery')->name('delete.photo.gallery');
+    });
+
+    // Video Gallery all Route
+    Route::controller(VideoGalleryController::class)->group(function () {
+        Route::get('/all/video/gallery','allVideoGallery')->name('all.video.gallery');
+        Route::get('/add/video/gallery','addVideoGallery')->name('add.video.gallery');
+        Route::post('/store/video/gallery','storeVideoGallery')->name('store.video.gallery');
+        Route::get('/edit/video/gallery/{id}','editVideoGallery')->name('edit.video.gallery');
+        Route::post('/update/video/gallery/{id}','updateVideoGallery')->name('update.video.gallery');
+        Route::get('/delete/video/gallery/{id}','deleteVideoGallery')->name('delete.video.gallery');
     });
 
 });
