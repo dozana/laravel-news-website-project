@@ -34,14 +34,11 @@
                                     @forelse($photo as $key => $item)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td><img width="50" src="{{ (!empty($item->photo_gallery)) ? url($item->image) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
-                                            <td>
-                                                <div>{{ \Carbon\Carbon::parse($item->post_date)->diffForHumans() }}</div>
-                                                <div><small>{{ $item->post_date }}</small></div>
-                                            </td>
+                                            <td><img width="50" src="{{ (!empty($item->photo_gallery)) ? url($item->photo_gallery) : url('upload/no_image.png') }}" alt="{{ $item->image }}"></td>
+                                            <td>{{ $item->post_date }}</td>
                                             <td class="text-center">
-                                                <a href="{{ route('edit.photo', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
-                                                <a href="{{ route('delete.photo', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
+                                                <a href="{{ route('edit.photo.gallery', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
+                                                <a href="{{ route('delete.photo.gallery', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
                                             </td>
                                         </tr>
                                     @empty

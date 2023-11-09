@@ -158,6 +158,12 @@
                                     <p>Photo Gallery</p>
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.photo.gallery') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add New Gallery</p>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li class="nav-item">

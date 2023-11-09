@@ -21,7 +21,7 @@
                             <h3 class="card-title">Add Photo Gallery</h3>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('store.category') }}">
+                            <form method="post" action="{{ route('store.photo.gallery') }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
@@ -41,7 +41,7 @@
                         <div class="card-header">
                             <h3 class="card-title">Preview Photo Gallery</h3>
                         </div>
-                        <div class="card-body">
+                        <div class="card-body text-center">
                             <div id="preview_img"></div>
                         </div>
                     </div>
@@ -66,7 +66,7 @@
 
                 previewImgDiv.empty(); // Clear any previous messages or images
                 $.each(data, function(index, file){ // loop through each file
-                    if(/(\.|\/)(gif|jpe?g|png)$/i.test(file.type)){ // check supported file type
+                    if(/(\.|\/)(gif|jpe?g|png|webp)$/i.test(file.type)){ // check supported file type
                         var fRead = new FileReader(); // new filereader
                         fRead.onload = (function(file){ // trigger function on successful read
                             return function(e) {
