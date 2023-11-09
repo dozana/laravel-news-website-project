@@ -21,11 +21,11 @@
                             <h3 class="card-title">Edit Video Gallery</h3>
                         </div>
                         <div class="card-body">
-                            <form method="post" action="{{ route('update.video.gallery') }}" enctype="multipart/form-data">
+                            <form method="post" action="{{ route('update.video.gallery', $video->id) }}" enctype="multipart/form-data">
                                 @csrf
 
                                 <div class="form-group">
-                                    <img width="120" class="img-fluid d-block mb-2" id="show_image" src="{{ (!empty($admin_data->photo)) ? url('upload/admin_images/'.$admin_data->photo) : url('upload/no_image.png') }}" alt="">
+                                    <img width="120" class="img-fluid d-block mb-2" id="show_image" src="{{ (!empty($video->video_image)) ? asset($video->video_image) : url('upload/no_image.png') }}" alt="">
                                     <label for="image">Image</label>
                                     <input type="file" class="form-control-file @error('image') is-invalid @enderror" name="image" id="image">
                                     @error('image')
@@ -35,7 +35,7 @@
 
                                 <div class="form-group">
                                     <label for="title">Title</label>
-                                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title">
+                                    <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title" value="{{ $video->video_title }}">
                                     @error('title')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -43,13 +43,13 @@
 
                                 <div class="form-group">
                                     <label for="url">URL</label>
-                                    <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" id="url">
+                                    <input type="text" class="form-control @error('url') is-invalid @enderror" name="url" id="url" value="{{ $video->video_url }}">
                                     @error('url')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>

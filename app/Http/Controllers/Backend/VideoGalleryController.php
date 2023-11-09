@@ -53,6 +53,63 @@ class VideoGalleryController extends Controller
 
     public function editVideoGallery($id)
     {
+        $video = VideoGallery::findOrFail($id);
 
+        return view('backend.video-gallery.edit_video', compact('video'));
+    }
+
+    public function updateVideoGallery(Request $request)
+    {
+        $video = VideoGallery::findOrFail($request->id);
+
+        // Check if a new image file is provided
+        if ($request->hasFile('image')) {
+            // Get the old photo's path
+            $old_photo_path = $video->video_image;
+
+            // Delete the old photo file from the server
+            if (file_exists($old_photo_path)) {
+                unlink($old_photo_path);
+            }
+
+            // Upload and save the new photo
+            $image = $request->file('image');
+            $name_gen = hexdec(uniqid()) . '.' . $image->getClientOriginalExtension();
+            Image::make($image)->resize(700, 400)->save('upload/video_gallery/' . $name_gen);
+            $save_url = 'upload/video_gallery/' . $name_gen;
+
+            // Update the photo record in the database
+            $video->update([
+                'video_title' => $request->title,
+                'video_url' => $request->url,
+                'post_date' => Carbon::now()->format('d F Y'),
+                'video_image' => $save_url
+            ]);
+
+            $notification = [
+                'message' => 'Video Updated Successfully',
+                'alert-type' => 'success'
+            ];
+
+            return redirect()->route('all.video.gallery')->with($notification);
+        } else {
+            return redirect()->route('all.video.gallery');
+        }
+    }
+
+    public function deleteVideoGallery($id)
+    {
+        $video_gallery = VideoGallery::findOrFail($id);
+        $image = $video_gallery->video_image;
+        unlink($image);
+
+        VideoGallery::findOrFail($id)->delete();
+
+        $notification = [
+            'message' => 'Video Deleted Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
