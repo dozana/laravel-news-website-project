@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\NewsPostController;
 use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
+use App\Http\Controllers\Backend\LiveTvController;
 
 /*
 |--------------------------------------------------------------------------
@@ -134,6 +135,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/edit/video/gallery/{id}','editVideoGallery')->name('edit.video.gallery');
         Route::post('/update/video/gallery/{id}','updateVideoGallery')->name('update.video.gallery');
         Route::get('/delete/video/gallery/{id}','deleteVideoGallery')->name('delete.video.gallery');
+    });
+
+    // Live TV all Route
+    Route::controller(LiveTvController::class)->group(function () {
+        Route::get('/update/live/tv','updateLiveTv')->name('update.live.tv');
     });
 
 });

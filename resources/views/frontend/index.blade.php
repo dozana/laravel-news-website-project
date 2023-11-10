@@ -99,7 +99,16 @@
                 <div class="card mb-4">
                     <div class="card-header">Live Stream</div>
                     <div class="card-body p-0">
-                        <img src="https://via.placeholder.com/640x220" class="img-fluid" alt="">
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                    width="100%"
+                                    height="315"
+                                    src="https://www.youtube.com/embed/ZLzFVrnpzcU?si=kTc_nzHPyIiOVajJ"
+                                    title="YouTube video player"
+                                    frameborder="0"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                    allowfullscreen></iframe>
+                        </div>
                     </div>
                 </div>
                 <div class="card mb-4">

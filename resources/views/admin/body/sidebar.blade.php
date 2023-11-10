@@ -168,6 +168,23 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-tv"></i>
+                            <p>
+                                Live TV
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('update.live.tv') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Update Live TV</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users-cog"></i>
                             <p>
                                 Admins
