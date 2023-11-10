@@ -7,6 +7,7 @@
     $banner = App\Models\Banner::find(1);
     $photo_gallery = \App\Models\PhotoGallery::latest()->get();
     $video_gallery = \App\Models\VideoGallery::latest()->get();
+    $live_tv = \App\Models\LiveTv::find(1);
 @endphp
 
 @section('home')
@@ -96,21 +97,56 @@
                 </div>
             </div>
             <div class="col-lg-4 col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header">Live Stream</div>
-                    <div class="card-body p-0">
-                        <div class="embed-responsive embed-responsive-16by9">
-                            <iframe class="embed-responsive-item"
-                                    width="100%"
-                                    height="315"
-                                    src="https://www.youtube.com/embed/ZLzFVrnpzcU?si=kTc_nzHPyIiOVajJ"
-                                    title="YouTube video player"
-                                    frameborder="0"
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                    allowfullscreen></iframe>
+
+                <!-- Add the modal markup to your HTML, usually at the end of your document -->
+                <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="videoModalLabel">YouTube Video</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <!-- Embed YouTube video here -->
+                                <div class="ratio ratio-16x9">
+                                    <iframe id="youtubeIframe"
+                                            class="embed-responsive-item"
+                                            width="100%"
+                                            height="315"
+                                            src="{{ $live_tv->live_url }}"
+                                            title="YouTube video player"
+                                            frameborder="0"
+                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                            allowfullscreen></iframe>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
+
+                <!-- Your card with the cover image and modal trigger -->
+                <div class="card mb-4">
+                    <img src="{{ asset($live_tv->live_image) }}" class="card-img-top" alt="Cover Image" data-bs-toggle="modal" data-bs-target="#videoModal">
+                    <div class="card-header">Live Stream</div>
+                </div>
+
+
+{{--                <div class="card mb-4">--}}
+{{--                    <div class="card-header">Live Stream</div>--}}
+{{--                    <div class="card-body p-0">--}}
+{{--                        <div class="embed-responsive embed-responsive-16by9">--}}
+{{--                            <iframe class="embed-responsive-item"--}}
+{{--                                    width="100%"--}}
+{{--                                    height="315"--}}
+{{--                                    src="{{ $live_tv->live_url }}"--}}
+{{--                                    title="YouTube video player"--}}
+{{--                                    frameborder="0"--}}
+{{--                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
+{{--                                    allowfullscreen></iframe>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+
                 <div class="card mb-4">
                     <div class="card-header">Old News</div>
                     <div class="card-body">
@@ -270,4 +306,20 @@
         </div>
 
     </div>
+@endsection
+
+
+@section('scripts')
+    <script>
+        // Update Image
+        $(document).ready(function() {
+            // Pause YouTube video when modal is closed
+            document.getElementById('videoModal').addEventListener('hidden.bs.modal', function () {
+                var youtubeIframe = document.getElementById('youtubeIframe');
+                var src = youtubeIframe.src;
+                youtubeIframe.src = '';
+                youtubeIframe.src = src;
+            });
+        });
+    </script>
 @endsection

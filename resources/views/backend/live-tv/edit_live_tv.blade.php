@@ -26,8 +26,9 @@
 
                                 <div class="form-group">
                                     <img width="120" class="img-fluid d-block mb-2" id="show_image" src="{{ (!empty($live->live_image)) ? asset($live->live_image) : url('upload/no_image.png') }}" alt="">
+
                                     <label for="live_image">Live Image</label>
-                                    <input type="file" class="form-control-file @error('live_image') is-invalid @enderror" name="live_image" id="live_image">
+                                    <input type="file" name="live_image" id="live_image" class="form-control-file @error('live_image') is-invalid @enderror">
                                     @error('live_image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -35,7 +36,7 @@
 
                                 <div class="form-group">
                                     <label for="live_url">Live URL</label>
-                                    <input type="text" class="form-control @error('live_url') is-invalid @enderror" name="live_url" id="live_url" value="{{ $live->live_url }}">
+                                    <input type="text" name="live_url" id="live_url" value="{{ $live->live_url }}" class="form-control @error('live_url') is-invalid @enderror">
                                     @error('live_url')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
@@ -55,7 +56,7 @@
     <script>
         // Update Image
         $(document).ready(function() {
-            $('#image').change(function (e) {
+            $('#live_image').change(function (e) {
                 let reader = new FileReader();
                 reader.onload = function (e) {
                     $('#show_image').attr('src', e.target.result);

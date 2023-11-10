@@ -176,9 +176,9 @@
                         </a>
                         <ul class="nav nav-treeview">
                             <li class="nav-item">
-                                <a href="{{ route('update.live.tv') }}" class="nav-link">
+                                <a href="{{ route('edit.live.tv') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>Update Live TV</p>
+                                    <p>Live TV</p>
                                 </a>
                             </li>
                         </ul>
