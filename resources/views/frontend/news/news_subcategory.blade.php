@@ -1,5 +1,9 @@
 @extends('frontend.home_dashboard')
 
+@section('title')
+    {{ $breadcrumb_subcategory->subcategory_name }} - Technology
+@endsection
+
 @section('home')
     <div class="container flex-grow">
 

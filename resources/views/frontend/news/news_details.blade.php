@@ -1,6 +1,8 @@
 @extends('frontend.home_dashboard')
 
-@section('title', 'News Details')
+@section('title')
+    {{ $news->news_title }} - Technology
+@endsection
 
 @section('home')
     <div class="container flex-grow">

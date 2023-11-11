@@ -10,6 +10,10 @@
     $live_tv = \App\Models\LiveTv::find(1);
 @endphp
 
+@section('title')
+    Welcome
+@endsection
+
 @section('home')
     <div class="container flex-grow">
 
