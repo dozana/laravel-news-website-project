@@ -66,7 +66,8 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h4 class="card-title mb-4">Leave a Comment</h4>
-                            <form id="commentForm">
+                            <form action="{{ route('store.review') }}" method="post">
+                                @csrf
                                 <div class="mb-3">
                                     <label for="subject" class="form-label">Subject</label>
                                     <input type="text" class="form-control" id="subject" name="subject" required>

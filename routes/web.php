@@ -8,6 +8,8 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\UserController;
 
 use App\Http\Controllers\Frontend\IndexController;
+use App\Http\Controllers\Frontend\ReviewController;
+
 use App\Http\Controllers\Backend\CategoryController;
 use App\Http\Controllers\Backend\SubcategoryController;
 use App\Http\Controllers\Backend\NewsPostController;
@@ -32,6 +34,7 @@ Route::get('/news/details/{id}/{slug}', [IndexController::class, 'newsDetails'])
 Route::get('/news/category/{id}/{slug}', [IndexController::class, 'categoryWiseNews']);
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subcategoryWiseNews']);
 Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
+Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review');
 
 
 Route::middleware(['auth'])->group(function () {
