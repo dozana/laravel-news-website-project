@@ -114,6 +114,14 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         Route::get('/active/news/post/{id}','activeNewsPost')->name('active.news.post');
     });
 
+    // Reviews all Route
+    Route::controller(ReviewController::class)->group(function () {
+        Route::get('/pending/review','pendingReview')->name('pending.review');
+        Route::get('/review/approve/{id}','reviewApprove')->name('review.approve');
+        Route::get('/approve/review','approveReview')->name('approve.review');
+        Route::get('/delete/review/{id}','deleteReview')->name('delete.review');
+    });
+
     // Banner all Route
     Route::controller(BannerController::class)->group(function () {
         Route::get('/all/banner','allBanner')->name('all.banner');

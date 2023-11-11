@@ -22,7 +22,7 @@
         </div>
 
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-compact nav-flat text-sm" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
                     <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -35,7 +35,7 @@
                 @if($user_status == 'active')
                     <li class="nav-header">Content Management</li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="#" class="nav-link active">
                             <i class="nav-icon fas fa-stream"></i>
                             <p>
                                 Category
@@ -99,6 +99,29 @@
                                 <a href="{{ route('add.news.post') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add News Post</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-comment-dots"></i>
+                            <p>
+                                Reviews
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('pending.review') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Pending Reviews</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('approve.review') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Approve Reviews</p>
                                 </a>
                             </li>
                         </ul>

@@ -227,29 +227,4 @@
         $('#dec').click(decreaseFontSize);
         setFontSize(size);
     </script>
-
-    <script>
-        // dynamic tabs
-        const tabLinks = document.querySelectorAll('.nav-link');
-        tabLinks.forEach((link) => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-
-                // Remove the 'active' class from all tab links and tab content
-                tabLinks.forEach((link) => {
-                    link.classList.remove('active');
-                });
-                const tabContent = document.querySelectorAll('.tab-pane');
-                tabContent.forEach((content) => {
-                    content.classList.remove('active');
-                });
-
-                // Add the 'active' class to the clicked tab link and its corresponding tab content
-                link.classList.add('active');
-                const targetTab = document.querySelector(link.getAttribute('href'));
-                targetTab.classList.add('active');
-            });
-        });
-    </script>
-
 @endsection
