@@ -1,5 +1,7 @@
 @extends('frontend.home_dashboard')
 
+@section('title', 'News Details')
+
 @section('home')
     <div class="container flex-grow">
 
@@ -93,28 +95,30 @@
                     </div>
 
                     <!-- Single Comment -->
-                    <div class="card my-3">
-                        <div class="card-body">
-                            <h5 class="card-title">John Doe</h5>
-                            <p class="card-subtitle mb-2 text-muted">john@example.com</p>
-                            <p class="card-subtitle mb-2 text-muted">Subject: Some Subject</p>
-                            <p class="card-text">This is a great comment! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <img src="https://picsum.photos/80/80" class="img-fluid" alt="User Photo">
-                        </div>
-                    </div>
+                    @foreach($review as $item)
+
+                        @if($item->status == 0)
+
+                        @else
+                            <div class="card my-3">
+                                <div class="card-body bg-light">
+                                    <div class="row">
+                                        <div class="col-md-2 text-center">
+                                            <img class="img-fluid rounded-circle" width="50" src="{{ (!empty($item->user->photo)) ? url('upload/user_images/'.$item->user->photo) : url('upload/no_avatar.png') }}" alt="{{ $item->user->name }}">
+                                        </div>
+                                        <div class="col-md-10">
+                                            <h6 class="card-title">{{ $item->user->name }}</h6>
+                                            <p class="card-text text-muted">{{ $item->comment }}</p>
+                                            <small>{{ \Carbon\Carbon::parse($item->created_at)->diffForHumans() }}</small>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        @endif
+
+                    @endforeach
                     <!-- End Single Comment -->
 
-                    <!-- Another Comment -->
-                    <div class="card my-3">
-                        <div class="card-body">
-                            <h5 class="card-title">Jane Smith</h5>
-                            <p class="card-subtitle mb-2 text-muted">jane@example.com</p>
-                            <p class="card-subtitle mb-2 text-muted">Subject: Another Subject</p>
-                            <p class="card-text">I agree with John! This is a fantastic discussion. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                            <!-- No photo in this example -->
-                        </div>
-                    </div>
-                    <!-- End Another Comment -->
                 @endguest
 
                 <h5 class="mb-3">Related News</h5>

@@ -5,11 +5,10 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\NewsPost;
+use App\Models\Review;
 use App\Models\Subcategory;
 use DateTime;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
-use Intervention\Image\Facades\Image;
 use Illuminate\Support\Facades\Session;
 
 
@@ -45,7 +44,9 @@ class IndexController extends Controller
         $new_news_post = NewsPost::orderBy('id', 'DESC')->limit(8)->get();
         $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
 
-        return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news', 'new_news_post', 'news_popular'));
+        $review = Review::where('news_id', $news->id)->latest()->limit(5)->get();
+
+        return view('frontend.news.news_details', compact('news', 'tags_all', 'related_news', 'new_news_post', 'news_popular', 'review'));
     }
 
     public function categoryWiseNews($id, $slug)

@@ -1,5 +1,7 @@
 @extends('frontend.home_dashboard')
 
+@section('title', 'News Category')
+
 @section('home')
     <div class="container flex-grow">
 
