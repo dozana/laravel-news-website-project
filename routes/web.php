@@ -17,6 +17,7 @@ use App\Http\Controllers\Backend\BannerController;
 use App\Http\Controllers\Backend\PhotoGalleryController;
 use App\Http\Controllers\Backend\VideoGalleryController;
 use App\Http\Controllers\Backend\LiveTvController;
+use App\Http\Controllers\Backend\SeoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -152,6 +153,12 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(LiveTvController::class)->group(function () {
         Route::get('/edit/live/tv','editLiveTv')->name('edit.live.tv');
         Route::post('/update/live/tv/{id}','updateLiveTv')->name('update.live.tv');
+    });
+
+    // SEO all Route
+    Route::controller(SeoController::class)->group(function () {
+        Route::get('/edit/seo','editSeo')->name('edit.seo');
+        Route::post('/update/seo/{id}','updateSeo')->name('update.seo');
     });
 
 });

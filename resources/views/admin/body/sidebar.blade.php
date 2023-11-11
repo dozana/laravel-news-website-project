@@ -208,6 +208,23 @@
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-search"></i>
+                            <p>
+                                SEO Setting
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('edit.seo') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>SEO Setting</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-users-cog"></i>
                             <p>
                                 Admins
