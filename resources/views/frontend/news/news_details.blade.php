@@ -68,13 +68,24 @@
                             <h4 class="card-title mb-4">Leave a Comment</h4>
                             <form action="{{ route('store.review') }}" method="post">
                                 @csrf
+                                <input type="hidden" name="news_id" value="{{ $news->id }}">
+
+                                @if(session('status'))
+                                    <div class="alert alert-success" role="alert">
+                                        {{ session('status') }}
+                                    </div>
+                                @elseif(session('error'))
+                                    <div class="alert alert-danger" role="alert">
+                                        {{ session('error') }}
+                                    </div>
+                                @endif
+
                                 <div class="mb-3">
-                                    <label for="subject" class="form-label">Subject</label>
-                                    <input type="text" class="form-control" id="subject" name="subject" required>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="comment" class="form-label">Comments</label>
-                                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                    <label for="comment" class="form-label">Comments <sup>*</sup></label>
+                                    <textarea class="form-control @error('comment') is-invalid @enderror" id="comment" name="comment" rows="3"></textarea>
+                                    @error('comment')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit Comment</button>
                             </form>
