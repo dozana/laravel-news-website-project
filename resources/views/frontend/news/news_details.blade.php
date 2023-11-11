@@ -58,6 +58,53 @@
                     </div>
                 </div>
 
+                @guest
+                    <div class="alert alert-primary" role="alert">
+                        For adding review you need to <a href="{{ route('login') }}"><strong>login</strong></a> first.
+                    </div>
+                @else
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h4 class="card-title mb-4">Leave a Comment</h4>
+                            <form id="commentForm">
+                                <div class="mb-3">
+                                    <label for="subject" class="form-label">Subject</label>
+                                    <input type="text" class="form-control" id="subject" name="subject" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="comment" class="form-label">Comments</label>
+                                    <textarea class="form-control" id="comment" name="comment" rows="3" required></textarea>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit Comment</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Single Comment -->
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">John Doe</h5>
+                            <p class="card-subtitle mb-2 text-muted">john@example.com</p>
+                            <p class="card-subtitle mb-2 text-muted">Subject: Some Subject</p>
+                            <p class="card-text">This is a great comment! Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <img src="https://picsum.photos/80/80" class="img-fluid" alt="User Photo">
+                        </div>
+                    </div>
+                    <!-- End Single Comment -->
+
+                    <!-- Another Comment -->
+                    <div class="card my-3">
+                        <div class="card-body">
+                            <h5 class="card-title">Jane Smith</h5>
+                            <p class="card-subtitle mb-2 text-muted">jane@example.com</p>
+                            <p class="card-subtitle mb-2 text-muted">Subject: Another Subject</p>
+                            <p class="card-text">I agree with John! This is a fantastic discussion. Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <!-- No photo in this example -->
+                        </div>
+                    </div>
+                    <!-- End Another Comment -->
+                @endguest
+
                 <h5 class="mb-3">Related News</h5>
                 <div class="row">
                     @foreach($related_news as $item)
