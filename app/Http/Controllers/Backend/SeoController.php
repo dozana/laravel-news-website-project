@@ -24,7 +24,20 @@ class SeoController extends Controller
             'meta_description' => 'required',
         ]);
 
-        dd($request->all());
+        $seo_id = $request->id;
 
+        Seo::findOrFail($seo_id)->update([
+            'meta_title' => $request->meta_title,
+            'meta_author' => $request->meta_author,
+            'meta_keywords' => $request->meta_keywords,
+            'meta_description' => $request->meta_description,
+        ]);
+
+        $notification = [
+            'message' => 'SEO Settings Updated Successfully',
+            'alert-type' => 'success'
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }
