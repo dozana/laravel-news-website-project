@@ -55,7 +55,7 @@
                         <div class="d-flex align-items-center">
                             <img width="60" src="{{ (!empty($news->user->photo)) ? url('upload/admin_images/'.$news->user->photo) : url('upload/no_image.png') }}" alt="Author Image">
                             <ul class="list-unstyled mb-0 p-2">
-                                <li>Posted By {{ $news['user']['name'] }}</li>
+                                <li>Posted By <a href="{{ route('reporter.all.news', $news->user_id) }}">{{ $news['user']['name'] }}</a></li>
                                 <li><i class="far fa-clock"></i>Updated: {{ $news->created_at->format('l M d Y') }} / <i class="far fa-eye"></i> {{ $news->view_count }} Read</li>
                             </ul>
                         </div>

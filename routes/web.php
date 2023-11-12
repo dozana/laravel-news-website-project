@@ -36,6 +36,7 @@ Route::get('/news/category/{id}/{slug}', [IndexController::class, 'categoryWiseN
 Route::get('/news/subcategory/{id}/{slug}', [IndexController::class, 'subcategoryWiseNews']);
 Route::post('/search', [IndexController::class, 'searchByDate'])->name('search-by-date');
 Route::get('/news', [IndexController::class, 'newsSearch'])->name('news.search');
+Route::get('/reporter/{id}', [IndexController::class, 'reporterNews'])->name('reporter.all.news');
 Route::post('/store/review', [ReviewController::class, 'storeReview'])->name('store.review');
 
 

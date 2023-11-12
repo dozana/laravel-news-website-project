@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\NewsPost;
 use App\Models\Review;
 use App\Models\Subcategory;
+use App\Models\User;
 use DateTime;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -101,5 +102,13 @@ class IndexController extends Controller
         $news_popular = NewsPost::orderBy('view_count','DESC')->limit(8)->get();
 
         return view('frontend.news.search', compact('news','new_news_post','news_popular','item'));
+    }
+
+    public function reporterNews($id)
+    {
+        $reporter = User::findOrFail($id);
+        $news = NewsPost::where('user_id', $id)->get();
+
+        return view('frontend.reporter.reporter_news_post', compact('reporter', 'news'));
     }
 }
