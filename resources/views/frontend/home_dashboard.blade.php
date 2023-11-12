@@ -7,6 +7,7 @@
 
 @include('frontend.body.header')
 @include('frontend.body.breaking_news')
+@include('frontend.body.search')
 @yield('home')
 @include('frontend.body.footer')
 
