@@ -21,7 +21,7 @@
                             <h3 class="card-title">All Permissions</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
-                            <table class="table table-hover text-nowrap">
+                            <table class="table table-hover table-sm text-nowrap">
                                 <thead>
                                 <tr>
                                     <th class="col-md-1">#</th>
@@ -51,7 +51,7 @@
                         </div>
                     </div>
 
-                    <a href="{{ route('add.category') }}" class="btn btn-primary mb-3">Add Permission</a>
+                    <a href="{{ route('add.permission') }}" class="btn btn-primary mb-3">Add Permission</a>
                 </div>
             </div>
         </div>
