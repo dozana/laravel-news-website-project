@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
 use Illuminate\Support\Facades\Route;
@@ -161,6 +162,11 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::controller(SeoController::class)->group(function () {
         Route::get('/edit/seo','editSeo')->name('edit.seo');
         Route::post('/update/seo/{id}','updateSeo')->name('update.seo');
+    });
+
+    // Permission all Route
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/all/permission','allPermission')->name('all.permission');
     });
 
 });
