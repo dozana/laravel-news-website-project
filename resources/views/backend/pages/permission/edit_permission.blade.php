@@ -25,7 +25,7 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="name">Add Permission</label>
+                                    <label for="name">Permission Name</label>
                                     <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $permission->name }}">
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>

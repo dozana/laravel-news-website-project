@@ -301,6 +301,12 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('add.roles.permission') }}" class="nav-link">
+                            <i class="fas fa-shield-alt nav-icon"></i>
+                            <p>Roles In Permission</p>
+                        </a>
+                    </li>
                 @endif
 
                 <li class="nav-header">Website Settings</li>
