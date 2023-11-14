@@ -40,39 +40,37 @@ class RoleController extends Controller
 
     public function editRole($id)
     {
-        $permission = Permission::findOrFail($id);
+        $role = Role::findOrFail($id);
 
-        return view('backend.pages.permission.edit_permission', compact('permission'));
+        return view('backend.pages.roles.edit_role', compact('role'));
     }
 
     public function updateRole(Request $request)
     {
         $request->validate([
             'name' => 'required',
-            'group_name' => 'required',
         ]);
 
-        $permission_id = $request->id;
+        $role_id = $request->id;
 
-        Permission::findOrFail($permission_id)->update([
+        Role::findOrFail($role_id)->update([
             'name' => $request->name,
-            'group_name' => $request->group_name,
         ]);
 
         $notification = [
-            'message' => 'Permission Updated Successfully',
+            'message' => 'Role Updated Successfully',
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('all.permission')->with($notification);
+        return redirect()->route('all.role')->with($notification);
     }
 
-    public function deletePermission($id)
+    public function deleteRole($id)
     {
-        Permission::findOrFail($id)->delete();
+        Role::findOrFail($id)->delete();
 
         $notification = [
-            'message' => 'Permission Deleted Successfully',
+            'message' => 'Role Deleted Successfully',
             'alert-type' => 'success',
         ];
 

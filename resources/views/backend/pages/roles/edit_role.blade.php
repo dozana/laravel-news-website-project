@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Add Role')
+@section('title', 'Edit Role')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Add Role</h1>
+                    <h1 class="m-0">Edit Role</h1>
                 </div>
             </div>
         </div>
@@ -18,21 +18,21 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add Role</h3>
+                            <h3 class="card-title">Edit Role</h3>
                         </div>
                         <div class="card-body table-responsive">
-                            <form method="post" action="{{ route('store.role') }}">
+                            <form method="post" action="{{ route('update.role', $role->id) }}">
                                 @csrf
 
                                 <div class="form-group">
                                     <label for="name">Role Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
+                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name" value="{{ $role->name }}">
                                     @error('name')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary">Update</button>
                             </form>
                         </div>
                     </div>
