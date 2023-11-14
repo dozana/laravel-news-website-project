@@ -4,48 +4,49 @@ namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Spatie\Permission\Models\Role;
 use Spatie\Permission\Models\Permission;
 
-class RoleController extends Controller
+class PermissionController extends Controller
 {
-    public function allRole()
+    public function allPermission()
     {
-        $role = Role::all();
-        return view('backend.pages.roles.all_roles', compact('role'));
+        $permission = Permission::all();
+        return view('backend.pages.permission.all_permission', compact('permission'));
     }
 
-    public function addRole()
+    public function addPermission()
     {
-        return view('backend.pages.roles.add_role');
+        return view('backend.pages.permission.add_permission');
     }
 
-    public function storeRole(Request $request)
+    public function storePermission(Request $request)
     {
         $request->validate([
             'name' => 'required',
+            'group_name' => 'required',
         ]);
 
-        $role = Role::create([
+        $role = Permission::create([
             'name' => $request->name,
+            'group_name' => $request->group_name,
         ]);
 
         $notification = [
-            'message' => 'Role Inserted Successfully',
+            'message' => 'Permission Inserted Successfully',
             'alert-type' => 'success',
         ];
 
-        return redirect()->route('all.role')->with($notification);
+        return redirect()->route('all.permission')->with($notification);
     }
 
-    public function editRole($id)
+    public function editPermission($id)
     {
         $permission = Permission::findOrFail($id);
 
         return view('backend.pages.permission.edit_permission', compact('permission'));
     }
 
-    public function updateRole(Request $request)
+    public function updatePermission(Request $request)
     {
         $request->validate([
             'name' => 'required',

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\PermissionController;
 use App\Http\Controllers\Backend\RoleController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Middleware\RedirectIfAuthenticated;
@@ -165,13 +166,23 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
     });
 
     // Permission all Route
-    Route::controller(RoleController::class)->group(function () {
+    Route::controller(PermissionController::class)->group(function () {
         Route::get('/all/permission','allPermission')->name('all.permission');
         Route::get('/add/permission','addPermission')->name('add.permission');
         Route::post('/store/permission','storePermission')->name('store.permission');
         Route::get('/edit/permission/{id}','editPermission')->name('edit.permission');
         Route::post('/update/permission/{id}','updatePermission')->name('update.permission');
         Route::get('/delete/permission/{id}','deletePermission')->name('delete.permission');
+    });
+
+    // Route all Route
+    Route::controller(RoleController::class)->group(function () {
+        Route::get('/all/roles','allRole')->name('all.role');
+        Route::get('/add/role','addRole')->name('add.role');
+        Route::post('/store/role','storeRole')->name('store.role');
+        Route::get('/edit/role/{id}','editRole')->name('edit.role');
+        Route::post('/update/role/{id}','updateRole')->name('update.role');
+        Route::get('/delete/role/{id}','deleteRole')->name('delete.role');
     });
 
 });

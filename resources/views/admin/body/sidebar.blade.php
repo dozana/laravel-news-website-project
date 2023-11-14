@@ -254,11 +254,12 @@
                             </p>
                         </a>
                     </li>
+                    <li class="nav-header">Privileges</li>
                     <li class="nav-item">
                         <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users-cog"></i>
+                            <i class="nav-icon fas fa-user-shield"></i>
                             <p>
-                                Roles & Permissions
+                                Permissions
                                 <i class="right fas fa-angle-left"></i>
                             </p>
                         </a>
@@ -270,9 +271,32 @@
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a href="#" class="nav-link">
+                                <a href="{{ route('add.permission') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
                                     <p>Add Permission</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-user-cog"></i>
+                            <p>
+                                Roles
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.role') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Roles</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.role') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Role</p>
                                 </a>
                             </li>
                         </ul>
