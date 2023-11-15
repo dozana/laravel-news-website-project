@@ -1,6 +1,6 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Add Role')
+@section('title', 'Add Roles In Permission')
 
 @section('admin')
     <div class="content-header">
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add Role</h3>
+                            <h3 class="card-title">Add Roles In Permission</h3>
                         </div>
                         <div class="card-body table-responsive">
                             <form method="post" action="{{ route('store.role') }}">
@@ -37,19 +37,34 @@
                                     @enderror
                                 </div>
 
+                                <div class="form-check mb-4">
+                                    <input type="checkbox" class="form-check-input" name="all_permissions" id="all_permissions">
+                                    <label class="form-check-label text-capitalize" for="all_permissions">Permission All</label>
+                                </div>
+
                                 @foreach($permission_groups as $group)
                                     <div class="row">
                                         <div class="col-3">
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">{{ $group->group_name }}</label>
+                                            <div class="form-check">
+                                                <input type="checkbox" class="form-check-input" id="">
+                                                <label class="form-check-label text-capitalize" for="">{{ $group->group_name }}</label>
                                             </div>
                                         </div>
                                         <div class="col-9">
-                                            <div class="form-check mb-3">
-                                                <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                                                <label class="form-check-label" for="exampleCheck1">Primary</label>
+                                            @php
+                                                $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                            @endphp
+                                            <div class="card">
+                                                <div class="card-body">
+                                                    @foreach($permissions as $permission)
+                                                        <div class="form-check">
+                                                            <input type="checkbox" class="form-check-input" id="">
+                                                            <label class="form-check-label" for="">{{ $permission->name }}</label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
                                             </div>
+
                                         </div>
                                     </div>
                                 @endforeach
@@ -83,4 +98,16 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        $('#all_permissions').click(function () {
+           if($(this).is(':checked')) {
+               $('input[type=checkbox]').prop('checked', true);
+           } else {
+               $('input[type=checkbox]').prop('checked', false);
+           }
+        });
+    </script>
 @endsection
