@@ -21,33 +21,40 @@
                             <h3 class="card-title">Add Roles In Permission</h3>
                         </div>
                         <div class="card-body table-responsive">
-                            <form method="post" action="{{ route('store.role') }}">
+                            <form method="post" action="{{ route('store.role.permission') }}">
                                 @csrf
 
+                                <!-- Select All Roles -->
                                 <div class="form-group">
-                                    <label for="group_name">All Roles Permissions Manager</label>
-                                    <select class="form-control @error('group_name') is-invalid @enderror" name="group_name" id="group_name">
+                                    <label for="role_id">All Roles</label>
+                                    <select name="role_id" class="form-control @error('role_id') is-invalid @enderror" id="role_id">
                                         <option selected disabled>- Select Role -</option>
                                         @foreach($roles as $role)
                                             <option value="{{ $role->id }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('group_name')
+                                    @error('role_id')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
-                                <div class="form-check mb-4">
-                                    <input type="checkbox" class="form-check-input" name="all_permissions" id="all_permissions">
+                                <!-- Select All Permissions Checkbox -->
+                                <div class="form-check">
+                                    <input type="checkbox" class="form-check-input" name="all_permissions" id="all_permissions" value="">
                                     <label class="form-check-label text-capitalize" for="all_permissions">Permission All</label>
                                 </div>
+
+                                <hr class="mb-4">
 
                                 @foreach($permission_groups as $group)
                                     <div class="row">
                                         <div class="col-3">
+                                            <!-- Group Names -->
                                             <div class="form-check">
-                                                <input type="checkbox" class="form-check-input" id="">
-                                                <label class="form-check-label text-capitalize" for="">{{ $group->group_name }}</label>
+                                                <input type="checkbox" id="" class="form-check-input">
+                                                <label class="form-check-label text-capitalize" for="">
+                                                    {{ $group->group_name }}
+                                                </label>
                                             </div>
                                         </div>
                                         <div class="col-9">
@@ -55,11 +62,14 @@
                                                 $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
                                             @endphp
                                             <div class="card">
+                                                <div class="card-header bg-success">Permissions</div>
                                                 <div class="card-body">
                                                     @foreach($permissions as $permission)
                                                         <div class="form-check">
-                                                            <input type="checkbox" class="form-check-input" id="">
-                                                            <label class="form-check-label" for="">{{ $permission->name }}</label>
+                                                            <input type="checkbox" name="permission[]" value="{{ $permission->id }}" id="permission_{{ $permission->id }}" class="form-check-input">
+                                                            <label class="form-check-label" for="permission_{{ $permission->id }}">
+                                                                {{ $permission->name }}
+                                                            </label>
                                                         </div>
                                                     @endforeach
                                                 </div>
@@ -68,27 +78,6 @@
                                         </div>
                                     </div>
                                 @endforeach
-
-                                <div class="form-group">
-                                    <label for="group_name">Group Name</label>
-                                    <select class="form-control @error('group_name') is-invalid @enderror" name="group_name" id="group_name">
-                                        <option selected disabled>- Select Category -</option>
-                                        <option value="category">Category</option>
-                                        <option value="subcategory">SubCategory</option>
-                                    </select>
-                                    @error('group_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="name">Role Name</label>
-                                    <input type="text" class="form-control @error('name') is-invalid @enderror" name="name" id="name">
-                                    @error('name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                    @enderror
-                                </div>
 
                                 <button type="submit" class="btn btn-primary">Save</button>
                             </form>
