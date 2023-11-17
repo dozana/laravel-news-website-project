@@ -290,7 +290,7 @@
                             <li class="nav-item">
                                 <a href="{{ route('all.permission') }}" class="nav-link">
                                     <i class="far fa-circle nav-icon"></i>
-                                    <p>All Permission</p>
+                                    <p>All Permissions</p>
                                 </a>
                             </li>
                             <li class="nav-item">
@@ -301,18 +301,31 @@
                             </li>
                         </ul>
                     </li>
+
                     <li class="nav-item">
-                        <a href="{{ route('add.roles.permission') }}" class="nav-link">
-                            <i class="fas fa-shield-alt nav-icon"></i>
-                            <p>Roles In Permission</p>
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon far fa-check-square"></i>
+                            <p>
+                                Roles in Permission
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
                         </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="{{ route('all.roles.permission') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>All Roles In Permission</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{ route('add.roles.permission') }}" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Add Roles In Permission</p>
+                                </a>
+                            </li>
+                        </ul>
                     </li>
-                    <li class="nav-item">
-                        <a href="{{ route('all.roles.permission') }}" class="nav-link">
-                            <i class="fas fa-shield-alt nav-icon"></i>
-                            <p>All Roles In Permission</p>
-                        </a>
-                    </li>
+
                 @endif
 
                 <li class="nav-header">Website Settings</li>

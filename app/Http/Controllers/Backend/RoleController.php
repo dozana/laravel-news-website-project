@@ -79,6 +79,15 @@ class RoleController extends Controller
         return redirect()->back()->with($notification);
     }
 
+
+
+    public function allRolesPermission()
+    {
+        $roles = Role::all();
+
+        return view('backend.pages.roles.all_roles_permission', compact('roles'));
+    }
+
     public function addRolesPermission()
     {
         $roles = Role::all();
@@ -108,13 +117,6 @@ class RoleController extends Controller
         return redirect()->route('all.roles.permission')->with($notification);
     }
 
-    public function allRolesPermission()
-    {
-        $roles = Role::all();
-
-        return view('backend.pages.roles.all_roles_permission', compact('roles'));
-    }
-
     public function adminEditRoles($id)
     {
         $role = Role::findOrFail($id);
@@ -122,5 +124,22 @@ class RoleController extends Controller
         $permission_groups = User::getPermissionGroups();
 
         return view('backend.pages.roles.edit_role_permission', compact('role', 'permissions', 'permission_groups'));
+    }
+
+    public function rolePermissionUpdate(Request $request, $id)
+    {
+        $role = Role::findOrFail($id);
+        $permissions = $request->permission;
+
+        if(!empty($permissions)) {
+            $role->syncPermissions($permissions);
+        }
+
+        $notification = [
+            'message' => 'Role Permission Updated Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->route('all.roles.permission')->with($notification);
     }
 }

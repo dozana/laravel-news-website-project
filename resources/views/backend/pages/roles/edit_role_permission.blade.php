@@ -22,7 +22,7 @@
                         </div>
                         <div class="card-body table-responsive">
 
-                            <form method="post" action="{{ route('store.role.permission') }}">
+                            <form method="post" action="{{ route('role.permission.update', $role->id) }}">
                                 @csrf
 
                                 <!-- Select All Roles -->
@@ -42,33 +42,32 @@
                                 <hr class="mb-4">
 
                                 @foreach($permission_groups as $group)
-                                    @php
-                                        $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
-                                        $role_has_permissions = App\Models\User::roleHasPermissions($role, $permissions);
-                                    @endphp
                                     <div class="row">
                                         <div class="col-3">
+                                            @php
+                                                $permissions = App\Models\User::getPermissionByGroupName($group->group_name);
+                                                $role_has_permissions = App\Models\User::roleHasPermissions($role, $permissions);
+                                            @endphp
                                             <!-- Group Names -->
                                             <div class="form-check">
-                                                <input type="checkbox" id="" class="form-check-input" {{ $role_has_permissions ? 'checked' : '' }}>
-                                                <label class="form-check-label text-capitalize" for="">
-                                                    {{ $group->group_name }}
-                                                </label>
+                                                <input type="checkbox" value="" id="customcheck1"  class="form-check-input" {{ $role_has_permissions ? 'checked' : '' }}>
+                                                <label class="form-check-label text-capitalize" for="customcheck1">{{ $group->group_name }}</label>
                                             </div>
                                         </div>
                                         <div class="col-9">
+
                                             <div class="card">
                                                 <div class="card-header bg-success">Permissions</div>
                                                 <div class="card-body">
                                                     @foreach($permissions as $permission)
                                                         <div class="form-check">
-                                                            <input type="checkbox" name="permission[]" value="{{ $permission->id }}" id="permission_{{ $permission->id }}" class="form-check-input"
-{{--                                                                {{ $role_has_permissions ? 'checked' : '' }}--}}
+                                                            <input name="permission[]"
                                                                 {{ $role->hasPermissionTo($permission->name) ? 'checked' : '' }}
-                                                            >
-                                                            <label class="form-check-label" for="permission_{{ $permission->id }}">
-                                                                {{ $permission->name }}
-                                                            </label>
+                                                                type="checkbox"
+                                                                value="{{ $permission->id }}"
+                                                                id="customcheck_{{ $permission->id }}"
+                                                                class="form-check-input">
+                                                            <label class="form-check-label" for="customcheck_{{ $permission->id }}">{{ $permission->name }}</label>
                                                         </div>
                                                     @endforeach
                                                 </div>

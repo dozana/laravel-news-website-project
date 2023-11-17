@@ -54,6 +54,8 @@
                             </table>
                         </div>
                     </div>
+
+                    <a href="{{ route('add.roles.permission') }}" class="btn btn-primary mb-3">Add</a>
                 </div>
             </div>
         </div>

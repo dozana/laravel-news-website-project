@@ -7,7 +7,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Role Permissions Manager</h1>
+                    <h1 class="m-0">Add Roles in Permission</h1>
                 </div>
             </div>
         </div>
@@ -52,9 +52,7 @@
                                             <!-- Group Names -->
                                             <div class="form-check">
                                                 <input type="checkbox" id="" class="form-check-input">
-                                                <label class="form-check-label text-capitalize" for="">
-                                                    {{ $group->group_name }}
-                                                </label>
+                                                <label class="form-check-label text-capitalize" for="">{{ $group->group_name }}</label>
                                             </div>
                                         </div>
                                         <div class="col-9">
