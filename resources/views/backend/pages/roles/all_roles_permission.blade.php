@@ -42,7 +42,7 @@
                                         </td>
                                         <td>
                                             <a href="{{ route('admin.edit.roles', $item->id) }}" class="btn btn-primary btn-xs">Edit</a>
-                                            <a href="{{ route('delete.role', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
+                                            <a href="{{ route('admin.delete.roles', $item->id) }}" class="btn btn-danger btn-xs" id="delete">Delete</a>
                                         </td>
                                     </tr>
                                 @empty
@@ -60,4 +60,9 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="{{ asset('backend/assets/dist/js/code.js') }}"></script>
 @endsection

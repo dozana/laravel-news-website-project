@@ -126,7 +126,7 @@ class RoleController extends Controller
         return view('backend.pages.roles.edit_role_permission', compact('role', 'permissions', 'permission_groups'));
     }
 
-    public function rolePermissionUpdate(Request $request, $id)
+    public function updateRolePermission(Request $request, $id)
     {
         $role = Role::findOrFail($id);
         $permissions = $request->permission;
@@ -141,5 +141,21 @@ class RoleController extends Controller
         ];
 
         return redirect()->route('all.roles.permission')->with($notification);
+    }
+
+    public function adminDeleteRoles($id)
+    {
+        $role = Role::findOrFail($id);
+
+        if(!is_null($role)) {
+            $role->delete();
+        }
+
+        $notification = [
+            'message' => 'Role Permission Deleted Successfully',
+            'alert-type' => 'success',
+        ];
+
+        return redirect()->back()->with($notification);
     }
 }

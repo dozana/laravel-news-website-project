@@ -22,7 +22,7 @@
                         </div>
                         <div class="card-body table-responsive">
 
-                            <form method="post" action="{{ route('role.permission.update', $role->id) }}">
+                            <form method="post" action="{{ route('update.role.permission', $role->id) }}">
                                 @csrf
 
                                 <!-- Select All Roles -->
