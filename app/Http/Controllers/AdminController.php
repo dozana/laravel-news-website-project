@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 
 class AdminController extends Controller
 {
@@ -126,7 +128,9 @@ class AdminController extends Controller
 
     public function addAdmin()
     {
-        return view('backend.admin.admin_add');
+        $roles = Role::all();
+
+        return view('backend.admin.admin_add', compact('roles'));
     }
 
     public function storeAdmin(Request $request)
@@ -136,10 +140,10 @@ class AdminController extends Controller
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'phone' => 'required'
+            'phone' => 'required',
+            'roles' => 'required',
         ]);
 
-        /*
         $user = new User();
         $user->name = $request->name;
         $user->username = $request->username;
@@ -149,8 +153,12 @@ class AdminController extends Controller
         $user->role = 'admin';
         $user->status = 'inactive';
         $user->save();
-        */
 
+        if($request->roles) {
+            $user->assignRole($request->roles);
+        }
+
+        /*
         User::insert([
             'name' => $request->name,
             'username' => $request->username,
@@ -160,6 +168,7 @@ class AdminController extends Controller
             'role' => 'admin',
             'status' => 'inactive'
         ]);
+        */
 
         $notification = [
             'message' => 'New Admin User Created Successfully',

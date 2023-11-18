@@ -24,6 +24,19 @@
                             <form method="post" action="{{ route('store.admin') }}">
                                 @csrf
 
+                                <div class="form-group">
+                                    <label for="roles">Assign Roles</label>
+                                    <select name="roles" class="form-control @error('roles') is-invalid @enderror" id="roles">
+                                        <option selected disabled>- Select Role -</option>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('roles')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">

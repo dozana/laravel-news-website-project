@@ -82,6 +82,8 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         // Admin status
         Route::get('/inactive/admin/user/{id}','inactiveAdminUser')->name('inactive.admin.user');
         Route::get('/active/admin/user/{id}','activeAdminUser')->name('active.admin.user');
+
+
     });
 
     // Category all Route

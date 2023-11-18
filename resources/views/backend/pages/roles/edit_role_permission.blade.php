@@ -90,12 +90,14 @@
 
 @section('scripts')
     <script>
-        $('#all_permissions').click(function () {
-            if($(this).is(':checked')) {
-                $('input[type=checkbox]').prop('checked', true);
-            } else {
-                $('input[type=checkbox]').prop('checked', false);
-            }
+        $(document).ready(function () {
+            $('#all_permissions').click(function () {
+                if($(this).is(':checked')) {
+                    $('input[type=checkbox]').prop('checked', true);
+                } else {
+                    $('input[type=checkbox]').prop('checked', false);
+                }
+            });
         });
     </script>
 @endsection
