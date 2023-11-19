@@ -30,6 +30,7 @@
                                     <th>E-Mail</th>
                                     <th>Phone</th>
                                     <th class="text-center">Status</th>
+                                    <th class="text-center">Role</th>
                                     <th class="text-center">Activate</th>
                                     <th class="text-center col-md-2">Action</th>
                                 </tr>
@@ -48,6 +49,11 @@
                                                 @else
                                                     <span class="badge bg-danger"><i class="far fa-times-circle"></i> Inactive</span>
                                                 @endif
+                                            </td>
+                                            <td>
+                                                @foreach($item->roles as $role)
+                                                    <span class="badge bg-info">{{ $role->name }}</span>
+                                                @endforeach
                                             </td>
                                             <td class="text-center">
                                                 @if($item->status == 'active')
