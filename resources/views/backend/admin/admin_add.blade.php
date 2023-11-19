@@ -25,14 +25,14 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="roles">Assign Roles</label>
-                                    <select name="roles" class="form-control @error('roles') is-invalid @enderror" id="roles">
+                                    <label for="role">Assign Roles</label>
+                                    <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
                                         <option selected disabled>- Select Role -</option>
                                         @foreach($roles as $role)
-                                            <option value="{{ $role->id }}">{{ $role->name }}</option>
+                                            <option value="{{ $role->name }}">{{ $role->name }}</option>
                                         @endforeach
                                     </select>
-                                    @error('roles')
+                                    @error('role')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>

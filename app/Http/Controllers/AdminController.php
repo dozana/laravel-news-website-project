@@ -133,42 +133,64 @@ class AdminController extends Controller
         return view('backend.admin.admin_add', compact('roles'));
     }
 
+//    public function storeAdmin(Request $request)
+//    {
+//        $request->validate([
+//            'role' => 'required',
+//            'name' => 'required',
+//            'username' => 'required',
+//            'email' => 'required',
+//            'password' => 'required',
+//            'phone' => 'required'
+//        ]);
+//
+//        $user = new User();
+//        $user->name = $request->name;
+//        $user->username = $request->username;
+//        $user->email = $request->email;
+//        $user->password = Hash::make($request->password);
+//        $user->phone = $request->phone;
+//        $user->role = 'admin';
+//        $user->status = 'inactive';
+//        $user->save();
+//
+//        if($request->role) {
+//            $user->assignRole($request->role);
+//        }
+//
+//        $notification = [
+//            'message' => 'New Admin User Created Successfully',
+//            'alert-type' => 'success'
+//        ];
+//
+//        return redirect()->route('all.admin')->with($notification);
+//    }
+
+
     public function storeAdmin(Request $request)
     {
         $request->validate([
+            'role' => 'required',
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
             'password' => 'required',
-            'phone' => 'required',
-            'roles' => 'required',
+            'phone' => 'required'
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->username = $request->username;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->phone = $request->phone;
-        $user->role = 'admin';
-        $user->status = 'inactive';
-        $user->save();
-
-        if($request->roles) {
-            $user->assignRole($request->roles);
-        }
-
-        /*
-        User::insert([
+        $user = User::create([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'phone' => $request->phone,
             'role' => 'admin',
-            'status' => 'inactive'
+            'status' => 'inactive',
         ]);
-        */
+
+        if ($request->role) {
+            $user->assignRole($request->role);
+        }
 
         $notification = [
             'message' => 'New Admin User Created Successfully',
