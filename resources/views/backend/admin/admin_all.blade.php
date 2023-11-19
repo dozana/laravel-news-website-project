@@ -69,13 +69,13 @@
                                         </tr>
                                     @empty
                                         <tr>
-                                            <td colspan="8">No data available</td>
+                                            <td colspan="9">No data available</td>
                                         </tr>
                                     @endforelse
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <td colspan="8">All Admins: {{ count($admins) }}</td>
+                                       <td colspan="9">All Admins: {{ count($admins) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>

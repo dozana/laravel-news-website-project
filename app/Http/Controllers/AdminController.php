@@ -262,7 +262,11 @@ class AdminController extends Controller
 
     public function deleteAdmin($id)
     {
-        User::findOrFail($id)->delete();
+        $user = User::findOrFail($id);
+
+        if(!is_null($user)) {
+            $user->delete();
+        }
 
         $notification = [
             'message' => 'Admin User Deleted Successfully',
