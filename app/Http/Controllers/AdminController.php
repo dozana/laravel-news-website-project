@@ -203,12 +203,15 @@ class AdminController extends Controller
     public function editAdmin($id)
     {
         $admin = User::findOrFail($id);
-        return view('backend.admin.admin_edit', compact('admin'));
+        $roles = Role::all();
+
+        return view('backend.admin.admin_edit', compact('admin', 'roles'));
     }
 
     public function updateAdmin(Request $request)
     {
         $request->validate([
+            'role' => 'required',
             'name' => 'required',
             'username' => 'required',
             'email' => 'required',
@@ -216,6 +219,9 @@ class AdminController extends Controller
         ]);
 
         $admin_user_id = $request->id;
+
+        // Find the user by ID
+        $user = User::findOrFail($admin_user_id);
 
         /*
         $user = User::findOrFail($admin_user_id);
@@ -228,7 +234,8 @@ class AdminController extends Controller
         $user->save();
         */
 
-        User::findOrFail($admin_user_id)->update([
+        // Update the user attributes
+        $user->update([
             'name' => $request->name,
             'username' => $request->username,
             'email' => $request->email,
@@ -237,8 +244,16 @@ class AdminController extends Controller
             'status' => 'inactive'
         ]);
 
+        // Detach existing roles
+        $user->roles()->detach();
+
+        // Assign the new role
+        if ($request->role) {
+            $user->assignRole($request->role);
+        }
+
         $notification = [
-            'message' => 'New Admin User Updated Successfully',
+            'message' => 'Admin User Updated Successfully',
             'alert-type' => 'success'
         ];
 

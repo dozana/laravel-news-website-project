@@ -24,6 +24,19 @@
                             <form method="post" action="{{ route('update.admin', $admin->id) }}">
                                 @csrf
 
+                                <div class="form-group">
+                                    <label for="role">Assign Roles</label>
+                                    <select name="role" id="role" class="form-control @error('role') is-invalid @enderror">
+                                        <option selected disabled>- Select Role -</option>
+                                        @foreach($roles as $role)
+                                            <option value="{{ $role->name }}" {{ $admin->hasRole($role->name) ? 'selected' : '' }}>{{ $role->name }}</option>
+                                        @endforeach
+                                    </select>
+                                    @error('role')
+                                        <span class="text-danger">{{ $message }}</span>
+                                    @enderror
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
