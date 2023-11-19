@@ -230,7 +230,7 @@ class AdminController extends Controller
         $user->email = $request->email;
         $user->phone = $request->phone;
         $user->role = 'admin';
-        $user->status = 'inactive';
+        $user->status = 'active';
         $user->save();
         */
 
@@ -241,7 +241,7 @@ class AdminController extends Controller
             'email' => $request->email,
             'phone' => $request->phone,
             'role' => 'admin',
-            'status' => 'inactive'
+            'status' => 'active'
         ]);
 
         // Detach existing roles
