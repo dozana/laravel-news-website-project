@@ -14,7 +14,7 @@
 
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
             <div class="image">
-                <img src="{{ (!empty($user_data->photo)) ? url('upload/admin_images/'.$user_data->photo) : url('upload/no_image.png') }}" class="img-circle bg-white elevation-2" alt="{{ $user_data->name }}">
+                <img src="{{ (!empty($user_data->photo)) ? url('upload/admin_images/'.$user_data->photo) : url('upload/no_image.png') }}" class="img-square bg-white elevation-2" style="width: 50px" alt="{{ $user_data->name }}">
             </div>
             <div class="info">
                 <a href="{{ route('admin.profile') }}" class="d-block">{{ $user_data->name }}</a>
@@ -34,29 +34,37 @@
 
                 @if($user_status == 'active')
                     <li class="nav-header">Content Management</li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-stream"></i>
-                            <p>
-                                Category
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.category') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Category</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.category') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Category</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+
+                    @if(Auth::user()->can('category.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-stream"></i>
+                                <p>
+                                    Category
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::user()->can('category.list'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('all.category') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Category</p>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(Auth::user()->can('category.add'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('add.category') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Category</p>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
+
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-stream"></i>

@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
-                        <div class="card-header py-3">
+                        <div class="card-header">
                             <h3 class="card-title">Edit Category</h3>
                         </div>
                         <div class="card-body">

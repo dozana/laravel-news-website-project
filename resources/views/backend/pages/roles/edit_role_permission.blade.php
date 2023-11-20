@@ -57,7 +57,6 @@
                                         <div class="col-9">
 
                                             <div class="card">
-                                                <div class="card-header bg-success">Permissions</div>
                                                 <div class="card-body">
                                                     @foreach($permissions as $permission)
                                                         <div class="form-check">
