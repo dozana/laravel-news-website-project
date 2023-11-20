@@ -65,274 +65,327 @@
                         </li>
                     @endif
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-stream"></i>
-                            <p>
-                                Subcategory
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.subcategory') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Subcategory</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.subcategory') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Subcategory</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-file-alt"></i>
-                            <p>
-                                News Post
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.news.post') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All News Post</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.news.post') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add News Post</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-comment-dots"></i>
-                            <p>
-                                Reviews
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('pending.review') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Pending Reviews</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('approve.review') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Approve Reviews</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-ad"></i>
-                            <p>
-                                Banner
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.banner') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Banner</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-images"></i>
-                            <p>
-                                Photo Gallery
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.photo.gallery') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Photo Gallery</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.photo.gallery') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Photo Gallery</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fab fa-youtube"></i>
-                            <p>
-                                Video Gallery
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.video.gallery') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Video Gallery</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.video.gallery') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Video Gallery</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-tv"></i>
-                            <p>
-                                Live TV
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('edit.live.tv') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Live TV</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-search"></i>
-                            <p>
-                                SEO Setting
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('edit.seo') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>SEO Setting</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-cog"></i>
-                            <p>
-                                Settings
-                            </p>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-users-cog"></i>
-                            <p>
-                                Admins
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.admin') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Admin</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.admin') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Admin</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-header">User Privileges</li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user-cog"></i>
-                            <p>
-                                Roles
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.role') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Roles</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.role') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Role</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon fas fa-user-shield"></i>
-                            <p>
-                                Permissions
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.permission') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Permissions</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.permission') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Permission</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if(Auth::user()->can('subcategory.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-stream"></i>
+                                <p>
+                                    Subcategory
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::user()->can('all.subcategory'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('all.subcategory') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All Subcategory</p>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(Auth::user()->can('add.subcategory'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('add.subcategory') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Subcategory</p>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
 
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="nav-icon far fa-check-square"></i>
-                            <p>
-                                Roles in Permission
-                                <i class="right fas fa-angle-left"></i>
-                            </p>
-                        </a>
-                        <ul class="nav nav-treeview">
-                            <li class="nav-item">
-                                <a href="{{ route('all.roles.permission') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>All Roles In Permission</p>
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a href="{{ route('add.roles.permission') }}" class="nav-link">
-                                    <i class="far fa-circle nav-icon"></i>
-                                    <p>Add Roles In Permission</p>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @if(Auth::user()->can('news.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-file-alt"></i>
+                                <p>
+                                    News Post
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::user()->can('news.list'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('all.news.post') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>All News Post</p>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(Auth::user()->can('news.add'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('add.news.post') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add News Post</p>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('review.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-comment-dots"></i>
+                                <p>
+                                    Reviews
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('pending.review') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Pending Reviews</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('approve.review') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Approve Reviews</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('banner.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-ad"></i>
+                                <p>
+                                    Banner
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('all.banner') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Banner</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('photo.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-images"></i>
+                                <p>
+                                    Photo Gallery
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::user()->can('photo.list'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('all.photo.gallery') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Photo Gallery</p>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(Auth::user()->can('photo.add'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('add.photo.gallery') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Photo Gallery</p>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('video.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fab fa-youtube"></i>
+                                <p>
+                                    Video Gallery
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                @if(Auth::user()->can('video.list'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('all.video.gallery') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Video Gallery</p>
+                                        </a>
+                                    </li>
+                                @endif
+                                @if(Auth::user()->can('video.add'))
+                                    <li class="nav-item">
+                                        <a href="{{ route('add.video.gallery') }}" class="nav-link">
+                                            <i class="far fa-circle nav-icon"></i>
+                                            <p>Add Video Gallery</p>
+                                        </a>
+                                    </li>
+                                @endif
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('live.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-tv"></i>
+                                <p>
+                                    Live TV
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('edit.live.tv') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Live TV</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('seo.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-search"></i>
+                                <p>
+                                    SEO Setting
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('edit.seo') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>SEO Setting</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('setting.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-cog"></i>
+                                <p>
+                                    Settings
+                                </p>
+                            </a>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('setting.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-users-cog"></i>
+                                <p>
+                                    Admins
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('all.admin') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Admin</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('add.admin') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Admin</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    <li class="nav-header">User Privileges</li>
+                    @if(Auth::user()->can('setting.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-cog"></i>
+                                <p>
+                                    Roles
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('all.role') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Roles</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('add.role') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Role</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('setting.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-shield"></i>
+                                <p>
+                                    Permissions
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('all.permission') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Permissions</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('add.permission') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
+
+                    @if(Auth::user()->can('role.menu'))
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon far fa-check-square"></i>
+                                <p>
+                                    Roles in Permission
+                                    <i class="right fas fa-angle-left"></i>
+                                </p>
+                            </a>
+                            <ul class="nav nav-treeview">
+                                <li class="nav-item">
+                                    <a href="{{ route('all.roles.permission') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>All Roles In Permission</p>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a href="{{ route('add.roles.permission') }}" class="nav-link">
+                                        <i class="far fa-circle nav-icon"></i>
+                                        <p>Add Roles In Permission</p>
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    @endif
 
                 @endif
 
