@@ -1,7 +1,7 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="#" class="brand-link">
         <img src="{{ asset('backend/assets/dist/img/logo.png') }}" alt="XURMA" class="brand-image img-circle elevation-3">
-        <span class="brand-text font-weight-light">CMS</span>
+        <span class="brand-text font-weight-light">Technology</span>
     </a>
 
     <div class="sidebar">

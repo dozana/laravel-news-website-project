@@ -8,7 +8,6 @@
     $photo_gallery = \App\Models\PhotoGallery::latest()->get();
     $video_gallery = \App\Models\VideoGallery::latest()->get();
     $live_tv = \App\Models\LiveTv::find(1);
-
     $news = App\Models\NewsPost::where('status', 1)->orderBy('id', 'ASC')->limit(8)->get();
     $categories = App\Models\Category::orderBy('id', 'ASC')->get();
 @endphp
@@ -53,6 +52,8 @@
         </div>
 
         @include('frontend.landing.news_tabs', ['categories' => $categories, 'news' => $news])
+
+        @include('frontend.landing.news_section_n1')
 
     </div>
 @endsection
