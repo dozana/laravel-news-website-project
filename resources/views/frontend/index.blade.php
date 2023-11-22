@@ -11,7 +11,6 @@
 
     $news = App\Models\NewsPost::where('status', 1)->orderBy('id', 'ASC')->limit(8)->get();
     $categories = App\Models\Category::orderBy('id', 'ASC')->get();
-
 @endphp
 
 @section('title')
@@ -21,344 +20,39 @@
 @section('home')
     <div class="container flex-grow">
 
-        <div class="row mb-3">
-            <div class="col-lg-12 col-md-12">
-                <ul class="nav nav-tabs" id="myTabs" role="tablist">
-                    @foreach($categories as $key => $category)
-                        <li class="nav-item">
-                            <a class="nav-link{{ $key === 0 ? ' active' : '' }}" id="menu{{ $category->id }}-tab" data-bs-toggle="tab" href="#menu{{ $category->id }}" role="tab">
-                                {{ $category->category_name }}
-                            </a>
-                        </li>
-                    @endforeach
-                </ul>
-
-                <div class="tab-content mb-3">
-                    @foreach($categories as $key => $category)
-                        <div class="tab-pane{{ $key === 0 ? ' active' : '' }}" id="menu{{ $category->id }}" role="tabpanel">
-                            <div class="row">
-                                @php
-                                    $categoryNews = $news->where('category_id', $category->id);
-                                @endphp
-
-                                @if($categoryNews->count() > 0)
-                                    @foreach($categoryNews as $item)
-                                        <div class="col-lg-3 col-md-3">
-                                            <div class="card mt-3 mb-2">
-                                                <div class="card-header p-0">
-                                                    <img class="img-fluid" src="{{ asset($item->image) }}" alt="#">
-                                                </div>
-                                                <div class="card-body text-center">
-                                                    <a href="{{ url('news/details/'.$item->id.'/'.$item->news_title_slug) }}">
-                                                        {{ $item->news_title }}
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @else
-                                    <div class="alert alert-primary mt-3" role="alert">
-                                        No data found
-                                    </div>
-                                @endif
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
-            </div>
-        </div>
-
         <div class="row">
             <div class="col-lg-8 col-md-8">
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
-                        <!-- Slider -->
-                        <div id="carouselExampleCaptions" class="carousel slide mb-4">
-                            <div class="carousel-indicators">
-                                @foreach($news_slider as $key => $slider)
-                                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="{{ $key }}" @if($key === 0) class="active" @endif aria-label="Slide {{ $key + 1 }}"></button>
-                                @endforeach
-                            </div>
-                            <div class="carousel-inner">
-                                @foreach($news_slider as $key => $slider)
-                                    <div class="carousel-item @if($key === 0) active @endif">
-                                        <img src="{{ asset($slider->image) }}" class="d-block w-100" alt="...">
-                                        <div class="carousel-caption d-none d-md-block">
-                                            <h5>
-                                                <a href="{{ url('/news/details/'.$slider->id.'/'.$slider->news_title_slug) }}" class="bg-dark text-white">
-                                                    {{ $slider->news_title }} - {{ $slider->created_at->format('M d Y') }}
-                                                </a>
-
-                                            </h5>
-                                            <p>Some representative placeholder content for the slide.</p>
-                                        </div>
-                                    </div>
-                                @endforeach
-                            </div>
-                            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-                                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Previous</span>
-                            </button>
-                            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-                                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="visually-hidden">Next</span>
-                            </button>
-                        </div>
+                        @include('frontend.landing.slider', ['news_slider' => $news_slider])
                     </div>
                     <div class="col-lg-6 col-md-6">
-                        <!-- Section Three -->
-                        <table class="table table-bordered">
-                            <tbody>
-                            @foreach($section_three as $three)
-                                <tr>
-                                    <td class="align-middle text-center">
-                                        <a href="{{ url('/news/details/'.$three->id.'/'.$three->news_title_slug) }}">
-                                            <img style="width: 80px; height: 40px;" class="img-fluid" src="{{ asset($three->image) }}" alt="{{ $three->news_title }}">
-                                        </a>
-                                    </td>
-                                    <td class="align-middle"><a href="{{ url('/news/details/'.$three->id.'/'.$three->news_title_slug) }}">{{ $three->news_title }}</a></td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                        @include('frontend.landing.section_three', ['section_three' => $section_three])
                     </div>
                 </div>
                 <div class="row">
-                    <!-- Banners -->
-                    <div class="col-lg-6 col-md-6">
-                        <img src="{{ asset($banner->home_one) }}" alt="" class="img-fluid mb-3">
-                    </div>
-                    <div class="col-lg-6 col-md-6">
-                        <img src="{{ asset($banner->home_two) }}" alt="" class="img-fluid mb-3">
-                    </div>
+                    @include('frontend.landing.banners', ['banner' => $banner])
                 </div>
-                <h5 class="mb-4 py-2 bg-light">Posts</h5>
-                <div class="row">
-                    @foreach($section_nine as $nine)
-                        <div class="col-lg-4 col-md-4">
-                            <div class="card mb-3">
-                                <div class="card-header p-0">
-                                    <a href="{{ url('/news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">
-                                        <img class="img-fluid" src="{{ asset($nine->image) }}" alt="{{ $nine->news_title }}">
-                                    </a>
-                                </div>
-                                <div class="card-body">
-                                    <h5><a href="{{ url('/news/details/'.$nine->id.'/'.$nine->news_title_slug) }}">{{ $nine->news_title }}</a></h5>
-                                    <small><i class="far fa-calendar-alt"></i> {{ $nine->created_at }}</small>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                @include('frontend.landing.section_nine', ['section_nine' => $section_nine])
             </div>
             <div class="col-lg-4 col-md-4">
-
-                <!-- Add the modal markup to your HTML, usually at the end of your document -->
-                <div class="modal fade" id="videoModal" tabindex="-1" aria-labelledby="videoModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="videoModalLabel">YouTube Video</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Embed YouTube video here -->
-                                <div class="ratio ratio-16x9">
-                                    <iframe id="youtubeIframe"
-                                            class="embed-responsive-item"
-                                            width="100%"
-                                            height="315"
-                                            src="{{ $live_tv->live_url }}"
-                                            title="YouTube video player"
-                                            frameborder="0"
-                                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                            allowfullscreen></iframe>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Your card with the cover image and modal trigger -->
-                <div class="card mb-4">
-                    <img src="{{ asset($live_tv->live_image) }}" class="card-img-top" alt="Cover Image" data-bs-toggle="modal" data-bs-target="#videoModal">
-                    <div class="card-header">Live Stream</div>
-                </div>
-
-
-{{--                <div class="card mb-4">--}}
-{{--                    <div class="card-header">Live Stream</div>--}}
-{{--                    <div class="card-body p-0">--}}
-{{--                        <div class="embed-responsive embed-responsive-16by9">--}}
-{{--                            <iframe class="embed-responsive-item"--}}
-{{--                                    width="100%"--}}
-{{--                                    height="315"--}}
-{{--                                    src="{{ $live_tv->live_url }}"--}}
-{{--                                    title="YouTube video player"--}}
-{{--                                    frameborder="0"--}}
-{{--                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"--}}
-{{--                                    allowfullscreen></iframe>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
-                <div class="card mb-4">
-                    <div class="card-header">Old News</div>
-                    <div class="card-body">
-                        <form action="{{ route('search-by-date') }}" method="post">
-                            @csrf
-                            <div class="input-group">
-                                <input type="date" name="date" class="form-control">
-                                <button type="submit" class="btn btn-outline-secondary">Search</button>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-
-                <ul class="nav nav-tabs" id="myTabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#tab1">Latest</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#tab2">Popular</a>
-                    </li>
-                </ul>
-                <div class="tab-content mb-4">
-                    <div class="tab-pane active" id="tab1">
-                        <table class="table table-bordered mt-2 mb-0">
-                            <tbody>
-                            @foreach($new_news_post as $key => $news_item)
-                                <tr>
-                                    <td class="text-center align-middle bg-light">
-                                        {{ $key + 1 }}
-                                    </td>
-                                    <td class="text-center p-1 align-middle">
-                                        <a href="{{ url('/news/details/'.$news_item->id.'/'.$news_item->news_title_slug) }}">
-                                            <img style="width: 100%; height: 40px" class="img-fluid" src="{{ asset($news_item->image) }}" alt="{{ $news_item->news_title }}">
-                                        </a>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="{{ url('/news/details/'.$news_item->id.'/'.$news_item->news_title_slug) }}">
-                                            {{ $news_item->news_title }}
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane" id="tab2">
-                        <table class="table table-bordered mt-2 mb-0">
-                            <tbody>
-                            @foreach($news_popular as $key => $popular_item)
-                                <tr>
-                                    <td class="text-center align-middle bg-light">
-                                        {{ $key + 1 }}
-                                    </td>
-                                    <td class="text-center align-middle">
-                                        <a href="{{ url('/news/details/'.$popular_item->id.'/'.$popular_item->news_title_slug) }}">
-                                            <img style="width: 100%; height: 40px" class="img-fluid" src="{{ asset($popular_item->image) }}" alt="{{ $popular_item->news_title }}">
-                                        </a>
-                                    </td>
-                                    <td class="align-middle">
-                                        <a href="{{ url('/news/details/'.$popular_item->id.'/'.$popular_item->news_title_slug) }}">
-                                            {{ $popular_item->news_title }}
-                                        </a>
-                                    </td>
-                                </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
+                @include('frontend.landing.live_tv', ['live_tv' => $live_tv])
+                @include('frontend.landing.latest_and_popular_news', ['new_news_post' => $new_news_post, 'news_popular' => $news_popular])
             </div>
         </div>
 
-        <div class="row">
-            <!-- Banners -->
-            <div class="col-lg-6 col-md-6">
-                <img src="{{ asset($banner->home_three) }}" alt="" class="img-fluid mb-3">
-            </div>
-            <div class="col-lg-6 col-md-6">
-                <img src="{{ asset($banner->home_four) }}" alt="" class="img-fluid mb-3">
-            </div>
-        </div>
+        @include('frontend.landing.additional_banners', ['banner' => $banner])
 
         <div class="row">
             <div class="col-lg-8 col-md-8">
-                <h5 class="mb-4 py-2 bg-light">Photo Gallery</h5>
-                <div class="row">
-                    @foreach($photo_gallery as $item)
-                        <div class="col-lg-3 col-md-3">
-                            <div class="card mb-3">
-                                <div class="card-body p-0">
-                                    <img src="{{ asset($item->photo_gallery) }}" class="img-fluid" alt="" data-bs-toggle="modal" data-bs-target="#myModal{{ $item->id }}">
-                                </div>
-                                <div class="card-footer text-center">
-                                    <small>{{ $item->post_date }}</small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="myModal{{ $item->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-body">
-                                        <img src="{{ asset($item->photo_gallery) }}" class="img-fluid" alt="">
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                </div>
+                @include('frontend.landing.photo_gallery', ['photo_gallery' => $photo_gallery])
             </div>
             <div class="col-lg-4 col-md-4">
-                <h5 class="mb-4 py-2 bg-light">Video Gallery</h5>
-                <table class="table table-bordered">
-                    <tbody>
-                    @foreach($video_gallery as $item)
-                        <tr>
-                            <td class="align-middle p-1">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal{{ $item->id }}">
-                                    <img style="width: 100%; height: 40px;" class="img-fluid" src="{{ asset($item->video_image) }}" alt="{{ $item->video_title }}">
-                                </a>
-                            </td>
-                            <td class="align-middle">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#videoModal{{ $item->id }}">
-                                    {{ $item->video_title }}
-                                </a>
-                            </td>
-                        </tr>
-
-                        <!-- Modal -->
-                        <div class="modal fade" id="videoModal{{ $item->id }}" tabindex="-1" aria-labelledby="videoModalLabel{{ $item->id }}" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="videoModalLabel{{ $item->id }}">{{ $item->video_title }}</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                    </div>
-                                    <div class="modal-body">
-                                        <div class="embed-responsive embed-responsive-16by9">
-                                            <iframe width="560" height="315" src="{{ $item->video_url }}" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                                        </div>
-                                    </div>
-                                    <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    @endforeach
-                    </tbody>
-                </table>
+                @include('frontend.landing.video_gallery', ['video_gallery' => $video_gallery])
             </div>
         </div>
+
+        @include('frontend.landing.news_tabs', ['categories' => $categories, 'news' => $news])
 
     </div>
 @endsection
