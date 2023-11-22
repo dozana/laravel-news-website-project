@@ -6,7 +6,7 @@
 <div class="bg-light text-white text-center py-1 mb-3 border-bottom">
     <div class="container">
         <div class="row">
-            <div class="col-lg-2 col-md-3">
+            <div class="col-lg-3 col-md-3">
                 <div class="text-dark pt-1">
                     <small>
                         <i class="far fa-calendar-alt"></i>
@@ -14,7 +14,7 @@
                     </small>
                 </div>
             </div>
-            <div class="col-lg-10 col-md-9">
+            <div class="col-lg-9 col-md-9">
                 <marquee direction="left" scrollamount="5px" onmouseover="this.stop()" onmouseout="this.start()" class="marquee">
                     @foreach($breaking_news as $item)
                         <a href="{{ url('/news/details/'.$item->id.'/'.$item->news_title_slug) }}">
