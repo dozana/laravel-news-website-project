@@ -29,9 +29,8 @@
                         @include('frontend.landing.section_three', ['section_three' => $section_three])
                     </div>
                 </div>
-                <div class="row">
-                    @include('frontend.landing.banners', ['banner' => $banner])
-                </div>
+
+                @include('frontend.landing.banner_block_a', ['banner' => $banner])
                 @include('frontend.landing.section_nine', ['section_nine' => $section_nine])
             </div>
             <div class="col-lg-4 col-md-4">
@@ -40,7 +39,7 @@
             </div>
         </div>
 
-        @include('frontend.landing.additional_banners', ['banner' => $banner])
+        @include('frontend.landing.banner_block_b', ['banner' => $banner])
 
         <div class="row">
             <div class="col-lg-8 col-md-8">
@@ -54,6 +53,7 @@
         @include('frontend.landing.news_tabs', ['categories' => $categories, 'news' => $news])
 
         @include('frontend.landing.news_section_n1')
+        @include('frontend.landing.news_section_n2')
 
     </div>
 @endsection

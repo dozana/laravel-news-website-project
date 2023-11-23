@@ -1,7 +1,7 @@
 <div class="row">
     <div class="col-lg-8 col-md-8">
 
-        <h3>{{ $skip_category_0->category_name }}</h3>
+        <h3><a href="{{ url('news/category/'.$skip_category_0->id.'/'.$skip_category_0->category_slug) }}">{{ $skip_category_0->category_name }}</a></h3>
 
         <div class="row">
             <div class="col-lg-6 col-md-6">

@@ -28,19 +28,6 @@
                     @endif
                 </li>
             @endforeach
-
-{{--            <li class="nav-item dropdown">--}}
-{{--                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
-{{--                    Sports--}}
-{{--                </a>--}}
-{{--                <div class="dropdown-menu" aria-labelledby="languageDropdown">--}}
-{{--                    <a class="dropdown-item" href="#">Item 1</a>--}}
-{{--                    <a class="dropdown-item" href="#">Item 2</a>--}}
-{{--                </div>--}}
-{{--            </li>--}}
-{{--            <li class="nav-item">--}}
-{{--                <a class="nav-link" href="#">Archive</a>--}}
-{{--            </li>--}}
         </ul>
 
         <ul class="navbar-nav">

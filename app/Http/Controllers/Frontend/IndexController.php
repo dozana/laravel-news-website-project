@@ -23,7 +23,10 @@ class IndexController extends Controller
         $skip_category_0 = Category::skip(0)->first();
         $skip_news_0 = NewsPost::where('status', 1)->where('category_id', $skip_category_0->id)->orderBy('id', 'DESC')->limit(5)->get();
 
-        return view('frontend.index', compact('new_news_post', 'news_popular', 'skip_category_0', 'skip_news_0'));
+        $skip_category_2 = Category::skip(2)->first();
+        $skip_news_2 = NewsPost::where('status', 1)->where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->limit(6)->get();
+
+        return view('frontend.index', compact('new_news_post', 'news_popular', 'skip_category_0', 'skip_news_0', 'skip_category_2', 'skip_news_2'));
     }
 
     public function newsDetails($id, $slug)
