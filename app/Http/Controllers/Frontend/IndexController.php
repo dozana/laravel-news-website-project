@@ -26,7 +26,21 @@ class IndexController extends Controller
         $skip_category_2 = Category::skip(2)->first();
         $skip_news_2 = NewsPost::where('status', 1)->where('category_id', $skip_category_2->id)->orderBy('id', 'DESC')->limit(6)->get();
 
-        return view('frontend.index', compact('new_news_post', 'news_popular', 'skip_category_0', 'skip_news_0', 'skip_category_2', 'skip_news_2'));
+        $skip_category_3 = Category::skip(3)->first();
+        $skip_news_3 = NewsPost::where('status', 1)->where('category_id', $skip_category_3->id)->orderBy('id', 'DESC')->limit(3)->get();
+
+        $skip_category_4 = Category::skip(4)->first();
+        $skip_news_4 = NewsPost::where('status', 1)->where('category_id', $skip_category_4->id)->orderBy('id', 'DESC')->limit(3)->get();
+
+        $skip_category_5 = Category::skip(5)->first();
+        $skip_news_5 = NewsPost::where('status', 1)->where('category_id', $skip_category_5->id)->orderBy('id', 'DESC')->limit(3)->get();
+
+
+        $skip_category_6 = Category::skip(5)->first();
+        $skip_news_6 = NewsPost::where('status', 1)->where('category_id', $skip_category_6->id)->orderBy('id', 'DESC')->limit(5)->get();
+
+
+        return view('frontend.index', compact('new_news_post', 'news_popular','skip_category_0','skip_news_0','skip_category_2','skip_news_2','skip_category_3','skip_news_3','skip_category_4','skip_news_4','skip_category_5','skip_news_5','skip_category_6','skip_news_6'));
     }
 
     public function newsDetails($id, $slug)

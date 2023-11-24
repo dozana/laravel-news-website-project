@@ -30,3 +30,15 @@ i {
     height: 16px;
     margin-right: 10px;
 }
+
+
+
+.footer,
+.footer a {
+    color: #fff;
+    line-height: 2rem;
+}
+
+.footer h5 {
+    margin-bottom: 2rem;
+}

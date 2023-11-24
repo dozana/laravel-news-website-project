@@ -75,7 +75,7 @@
                                 </p>
                             </a>
                             <ul class="nav nav-treeview">
-                                @if(Auth::user()->can('all.subcategory'))
+                                @if(Auth::user()->can('subcategory.list'))
                                     <li class="nav-item">
                                         <a href="{{ route('all.subcategory') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>
@@ -83,7 +83,7 @@
                                         </a>
                                     </li>
                                 @endif
-                                @if(Auth::user()->can('add.subcategory'))
+                                @if(Auth::user()->can('subcategory.add'))
                                     <li class="nav-item">
                                         <a href="{{ route('add.subcategory') }}" class="nav-link">
                                             <i class="far fa-circle nav-icon"></i>

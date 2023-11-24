@@ -54,6 +54,8 @@
 
         @include('frontend.landing.news_section_n1')
         @include('frontend.landing.news_section_n2')
+        @include('frontend.landing.news_section_n3')
+        @include('frontend.landing.news_section_n4')
 
     </div>
 @endsection

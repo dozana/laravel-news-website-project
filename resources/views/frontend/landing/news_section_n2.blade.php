@@ -1,4 +1,4 @@
-<h3><a href="{{ url('news/category/'.$skip_category_2->id.'/'.$skip_category_2->category_slug) }}">{{ $skip_category_2->category_name }}</a></h3>
+<h3 class="mb-3"><a href="{{ url('news/category/'.$skip_category_2->id.'/'.$skip_category_2->category_slug) }}">{{ $skip_category_2->category_name }}</a></h3>
 <div class="row">
     @foreach($skip_news_2 as $item)
         <div class="col-lg-3 col-md-3">
