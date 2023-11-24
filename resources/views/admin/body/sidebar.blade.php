@@ -36,7 +36,7 @@
                     <li class="nav-header">Content Management</li>
 
                     @if(Auth::user()->can('category.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.category', 'add.category') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-stream"></i>
                                 <p>
@@ -47,7 +47,7 @@
                             <ul class="nav nav-treeview">
                                 @if(Auth::user()->can('category.list'))
                                     <li class="nav-item">
-                                        <a href="{{ route('all.category') }}" class="nav-link">
+                                        <a href="{{ route('all.category') }}" class="nav-link active">
                                             <i class="far fa-circle nav-icon"></i>
                                             <p>All Category</p>
                                         </a>
@@ -66,7 +66,7 @@
                     @endif
 
                     @if(Auth::user()->can('subcategory.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.subcategory', 'add.subcategory') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-stream"></i>
                                 <p>
@@ -96,7 +96,7 @@
                     @endif
 
                     @if(Auth::user()->can('news.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.news.post', 'add.news.post') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-file-alt"></i>
                                 <p>
@@ -126,7 +126,7 @@
                     @endif
 
                     @if(Auth::user()->can('review.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('pending.review', 'approve.review') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-comment-dots"></i>
                                 <p>
@@ -151,8 +151,10 @@
                         </li>
                     @endif
 
+                    <li class="nav-header">Features</li>
+
                     @if(Auth::user()->can('banner.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.banner') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-ad"></i>
                                 <p>
@@ -172,7 +174,7 @@
                     @endif
 
                     @if(Auth::user()->can('photo.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.photo.gallery','add.photo.gallery') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-images"></i>
                                 <p>
@@ -202,7 +204,7 @@
                     @endif
 
                     @if(Auth::user()->can('video.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.video.gallery','add.video.gallery') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fab fa-youtube"></i>
                                 <p>
@@ -232,7 +234,7 @@
                     @endif
 
                     @if(Auth::user()->can('live.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('edit.live.tv') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-tv"></i>
                                 <p>
@@ -252,7 +254,7 @@
                     @endif
 
                     @if(Auth::user()->can('seo.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('edit.seo') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-search"></i>
                                 <p>
@@ -271,19 +273,9 @@
                         </li>
                     @endif
 
+                    <li class="nav-header">User Settings</li>
                     @if(Auth::user()->can('setting.menu'))
-                        <li class="nav-item">
-                            <a href="#" class="nav-link">
-                                <i class="nav-icon fas fa-cog"></i>
-                                <p>
-                                    Settings
-                                </p>
-                            </a>
-                        </li>
-                    @endif
-
-                    @if(Auth::user()->can('setting.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.admin', 'add.admin') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-users-cog"></i>
                                 <p>
@@ -307,10 +299,8 @@
                             </ul>
                         </li>
                     @endif
-
-                    <li class="nav-header">User Privileges</li>
                     @if(Auth::user()->can('setting.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.role', 'add.role') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-cog"></i>
                                 <p>
@@ -336,7 +326,7 @@
                     @endif
 
                     @if(Auth::user()->can('setting.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.permission', 'add.permission') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon fas fa-user-shield"></i>
                                 <p>
@@ -362,7 +352,7 @@
                     @endif
 
                     @if(Auth::user()->can('role.menu'))
-                        <li class="nav-item">
+                        <li class="nav-item {{ Route::is('all.roles.permission', 'add.roles.permission') ? 'menu-open' : '' }}">
                             <a href="#" class="nav-link">
                                 <i class="nav-icon far fa-check-square"></i>
                                 <p>

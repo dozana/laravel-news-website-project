@@ -28,7 +28,7 @@
                             </tr>
                         @endif
                     @endforeach
-                    @if(count($skip_news_4) > 0)
+                    @if(count($skip_news_3) > 0)
                         <tr>
                             <td colspan="2">
                                 <a href="{{ url('news/category/'.$skip_category_3->id.'/'.$skip_category_3->category_slug) }}" class="btn btn-primary btn-sm">Read More</a>
