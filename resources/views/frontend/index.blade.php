@@ -29,12 +29,12 @@
                         @include('frontend.landing.section_three', ['section_three' => $section_three])
                     </div>
                 </div>
-
                 @include('frontend.landing.banner_block_a', ['banner' => $banner])
                 @include('frontend.landing.section_nine', ['section_nine' => $section_nine])
             </div>
             <div class="col-lg-4 col-md-4">
                 @include('frontend.landing.live_tv', ['live_tv' => $live_tv])
+                @include('frontend.landing.old_news')
                 @include('frontend.landing.latest_and_popular_news', ['new_news_post' => $new_news_post, 'news_popular' => $news_popular])
             </div>
         </div>
