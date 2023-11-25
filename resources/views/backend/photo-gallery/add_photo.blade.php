@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-8 col-md-8">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">Add Photo</h3>
                         </div>
@@ -25,21 +25,21 @@
                                 @csrf
 
                                 <div class="form-group">
-                                    <label for="multi_image">Multi Photo Gallery</label>
+                                    <label for="multi_image">Choose Photos</label>
                                     <input type="file" class="form-control-file @error('multi_image') is-invalid @enderror" name="multi_image[]" id="multi_image" multiple>
                                     @error('multi_image')
                                         <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
                             </form>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-4">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
                         <div class="card-header">
-                            <h3 class="card-title">Preview Photo Gallery</h3>
+                            <h3 class="card-title">Preview Photo</h3>
                         </div>
                         <div class="card-body text-center">
                             <div id="preview_img"></div>

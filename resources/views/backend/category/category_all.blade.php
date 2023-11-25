@@ -56,7 +56,7 @@
                     </div>
 
                     @if(Auth::user()->can('category.add'))
-                        <a href="{{ route('add.category') }}" class="btn btn-primary btn-sm mb-3">Add Category</a>
+                        <a href="{{ route('add.category') }}" class="btn btn-primary btn-sm mb-3">New</a>
                     @endif
                 </div>
             </div>

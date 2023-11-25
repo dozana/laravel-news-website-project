@@ -55,7 +55,7 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">All Posts</h3>
                         </div>
@@ -113,14 +113,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <td colspan="9">All Admins: {{ count($news_post) }}</td>
+                                       <td colspan="9">All Posts: {{ count($news_post) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
 
-                    <a href="{{ route('add.news.post') }}" class="btn btn-primary mb-3">Add News Post</a>
+                    <a href="{{ route('add.news.post') }}" class="btn btn-primary btn-sm mb-3">New</a>
                 </div>
             </div>
         </div>

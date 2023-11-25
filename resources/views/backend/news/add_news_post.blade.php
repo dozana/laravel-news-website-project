@@ -115,7 +115,7 @@
 
                         <div class="card card-primary card-outline">
                             <div class="card-header py-3">
-                                <h3 class="card-title">Post Details</h3>
+                                <h3 class="card-title">Post Content</h3>
                                 <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Save</button>
                             </div>
                             <div class="card-body">

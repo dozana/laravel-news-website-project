@@ -27,7 +27,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">Edit SEO</h3>
                         </div>
@@ -59,20 +59,15 @@
                                     @enderror
                                 </div>
 
-{{--                                <div class="form-group">--}}
-{{--                                    <label for="meta_keywords">Meta Keywords</label>--}}
-{{--                                    <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="meta_keywords" id="meta_keywords" value="">--}}
-{{--                                </div>--}}
-
                                 <div class="form-group">
                                     <label for="meta_description">Meta Description</label>
                                     <textarea name="meta_description" id="meta_description" rows="3" class="form-control @error('meta_description') is-invalid @enderror">{{ $seo->meta_description }}</textarea>
                                     @error('meta_description')
-                                    <span class="text-danger">{{ $message }}</span>
+                                        <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Update</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Update</button>
                             </form>
                         </div>
                     </div>

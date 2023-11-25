@@ -16,7 +16,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12 col-md-12">
-                    <div class="card">
+                    <div class="card card-primary card-outline">
                         <div class="card-header">
                             <h3 class="card-title">Add Video</h3>
                         </div>
@@ -49,7 +49,7 @@
                                     @enderror
                                 </div>
 
-                                <button type="submit" class="btn btn-primary">Save</button>
+                                <button type="submit" class="btn btn-primary btn-sm">Save</button>
                             </form>
                         </div>
                     </div>

@@ -1,6 +1,6 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Edit News Post')
+@section('title', 'Edit Post')
 
 @section('styles')
     <!-- summernote -->
@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Edit News Post</h1>
+                    <h1 class="m-0">Edit Post</h1>
                 </div>
             </div>
         </div>
@@ -111,7 +111,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="form-group">
+                                <div class="form-group mb-0">
                                     <label for="tags">Select Tags</label>
                                     <input type="text" class="selectize @error('selectize') is-invalid @enderror" name="tags" id="tags" value="{{ $news_post->tags }}">
                                 </div>
@@ -123,23 +123,22 @@
                     <div class="col-md-8">
                         <div class="card card-primary card-outline">
                             <div class="card-header py-3">
-                                <h3 class="card-title">Post Details</h3>
+                                <h3 class="card-title">Post Content</h3>
                                 <button type="submit" class="btn btn-primary btn-xs btn-flat float-sm-right">Update</button>
                             </div>
                             <div class="card-body">
 
                                 <div class="form-group">
-                                    <label for="news_title">News Title</label>
+                                    <label for="news_title">Post Title</label>
                                     <input type="text" class="form-control @error('news_title') is-invalid @enderror" name="news_title" id="news_title" value="{{ $news_post->news_title }}">
                                     @error('news_title')
                                     <span class="text-danger">{{ $message }}</span>
                                     @enderror
                                 </div>
-                                <div class="form-group">
-                                    <label for="news_details">News Details</label>
+                                <div class="form-group mb-0">
+                                    <label for="news_details">Post Details</label>
                                     <textarea class="form-control summernote @error('news_title') is-invalid @enderror" name="news_details">{{ $news_post->news_details }}</textarea>
                                 </div>
-
                             </div>
                         </div>
                     </div>
