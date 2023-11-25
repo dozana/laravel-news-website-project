@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'My Profile')
+@section('title', 'Change Password')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Admin Change Password</h1>
+                    <h1 class="m-0">Change Password</h1>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header py-3">
-                            <h3 class="card-title">Admin Change Password</h3>
+                            <h3 class="card-title">Change Password</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('admin.update.password') }}">

@@ -21,7 +21,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Add News Post</h1>
+                    <h1 class="m-0">Add Post</h1>
                 </div>
             </div>
         </div>

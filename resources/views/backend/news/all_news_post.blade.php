@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'All News Post')
+@section('title', 'All Posts')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">All News Post</h1>
+                    <h1 class="m-0">All Posts</h1>
                 </div>
             </div>
         </div>
@@ -19,7 +19,7 @@
                     <div class="info-box">
                         <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">All News Post</span>
+                            <span class="info-box-text">All Posts</span>
                             <span class="info-box-number">{{ count($news_post) }}</span>
                         </div>
                     </div>
@@ -28,7 +28,7 @@
                     <div class="info-box mb-3">
                         <span class="info-box-icon bg-success elevation-1"><i class="fas fa-thumbs-up"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Active News</span>
+                            <span class="info-box-text">Active Posts</span>
                             <span class="info-box-number">{{ count($active_news) }}</span>
                         </div>
                     </div>
@@ -38,7 +38,7 @@
                     <div class="info-box mb-3">
                         <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-thumbs-down"></i></span>
                         <div class="info-box-content">
-                            <span class="info-box-text">Inactive News</span>
+                            <span class="info-box-text">Inactive Posts</span>
                             <span class="info-box-number">{{ count($inactive_news) }}</span>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All News Post</h3>
+                            <h3 class="card-title">All Posts</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">

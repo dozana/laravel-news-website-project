@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Edit Photo Gallery')
+@section('title', 'Edit Photo')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Edit Photo Gallery</h1>
+                    <h1 class="m-0">Edit Photo</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Edit Photo Gallery</h3>
+                            <h3 class="card-title">Edit Photo</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('update.photo.gallery', $photo_gallery->id) }}" enctype="multipart/form-data">

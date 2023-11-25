@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'My Profile')
+@section('title', 'Edit Profile')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Admin Edit Profile</h1>
+                    <h1 class="m-0">Edit Profile</h1>
                 </div>
             </div>
         </div>
@@ -44,7 +44,7 @@
                 <div class="col-md-8">
                     <div class="card card-primary card-outline">
                         <div class="card-header py-3">
-                            <h3 class="card-title">Admin Personal Info</h3>
+                            <h3 class="card-title">Personal Info</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('admin.profile.store') }}" enctype="multipart/form-data">

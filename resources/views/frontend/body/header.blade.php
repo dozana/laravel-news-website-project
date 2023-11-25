@@ -1,12 +1,13 @@
+@php
+    $user = Auth::user();
+    $categories = \App\Models\Category::orderBy('id', 'ASC')->limit(6)->get();
+@endphp
+
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">Technology</a>
 
         <ul class="navbar-nav mr-auto">
-            @php
-                $categories = \App\Models\Category::orderBy('id', 'ASC')->limit(12)->get();
-            @endphp
-
             @foreach($categories as $category)
 
                 @php
@@ -33,6 +34,9 @@
         <ul class="navbar-nav">
             @auth()
                 <li class="nav-item">
+                    <a class="nav-link" href="{{ route('dashboard') }}">{{ $user->name }}</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link" href="{{ route('user.logout') }}">Logout</a>
                 </li>
             @else
@@ -44,15 +48,15 @@
                 </li>
             @endauth
 
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Language
-                </a>
-                <div class="dropdown-menu" aria-labelledby="languageDropdown">
-                    <a class="dropdown-item" href="#">English</a>
-                    <a class="dropdown-item" href="#">Spanish</a>
-                </div>
-            </li>
+{{--            <li class="nav-item dropdown">--}}
+{{--                <a class="nav-link dropdown-toggle" href="#" id="languageDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                    Language--}}
+{{--                </a>--}}
+{{--                <div class="dropdown-menu" aria-labelledby="languageDropdown">--}}
+{{--                    <a class="dropdown-item" href="#">English</a>--}}
+{{--                    <a class="dropdown-item" href="#">Spanish</a>--}}
+{{--                </div>--}}
+{{--            </li>--}}
         </ul>
     </div>
 </nav>

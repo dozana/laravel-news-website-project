@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Add Admin')
+@section('title', 'Add User')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Add Admin</h1>
+                    <h1 class="m-0">Add User</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header py-3">
-                            <h3 class="card-title">Add Admin</h3>
+                            <h3 class="card-title">Add User</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('store.admin') }}">

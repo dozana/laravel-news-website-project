@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Add Video Gallery')
+@section('title', 'Add Video')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Add Video Gallery</h1>
+                    <h1 class="m-0">Add Video</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">Add Video Gallery</h3>
+                            <h3 class="card-title">Add Video</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('store.video.gallery') }}" enctype="multipart/form-data">

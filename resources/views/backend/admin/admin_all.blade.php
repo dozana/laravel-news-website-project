@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'All Admins')
+@section('title', 'All Users')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">All Admins</h1>
+                    <h1 class="m-0">All Users</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-lg-12 col-md-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">All Admins</h3>
+                            <h3 class="card-title">All Users</h3>
                         </div>
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
@@ -75,14 +75,14 @@
                                 </tbody>
                                 <tfoot>
                                     <tr>
-                                       <td colspan="9">All Admins: {{ count($admins) }}</td>
+                                       <td colspan="9">All Users: {{ count($admins) }}</td>
                                     </tr>
                                 </tfoot>
                             </table>
                         </div>
                     </div>
 
-                    <a href="{{ route('add.admin') }}" class="btn btn-primary mb-3">Add Admin</a>
+                    <a href="{{ route('add.admin') }}" class="btn btn-primary mb-3">Add New</a>
                 </div>
             </div>
         </div>

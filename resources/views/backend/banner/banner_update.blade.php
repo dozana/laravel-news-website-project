@@ -1,13 +1,13 @@
 @extends('admin.admin_dashboard')
 
-@section('title', 'Update Banner')
+@section('title', 'Edit Banners')
 
 @section('admin')
     <div class="content-header">
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-lg-12 col-sm-12">
-                    <h1 class="m-0">Update Banner</h1>
+                    <h1 class="m-0">Edit Banners</h1>
                 </div>
             </div>
         </div>
@@ -18,7 +18,7 @@
                 <div class="col-md-12">
                     <div class="card card-primary card-outline">
                         <div class="card-header py-3">
-                            <h3 class="card-title">Update Banner</h3>
+                            <h3 class="card-title">Edit Banners</h3>
                         </div>
                         <div class="card-body">
                             <form method="post" action="{{ route('update.banner', $banner->id) }}" enctype="multipart/form-data">
